@@ -24,6 +24,7 @@ class _UBCartState extends State<UBCart> {
       total += item.price * item.quantity;
     }
   }
+  
   void incrementQuantity(MenuItem item) {
     setState(() {
       item.quantity++;
