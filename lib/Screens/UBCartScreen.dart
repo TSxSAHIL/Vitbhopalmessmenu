@@ -6,6 +6,7 @@ class UBCart extends StatefulWidget {
   const UBCart({Key? key, required this.cartItems}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _UBCartState createState() => _UBCartState();
 }
 
@@ -24,7 +25,7 @@ class _UBCartState extends State<UBCart> {
       total += item.price * item.quantity;
     }
   }
-  
+
   void incrementQuantity(MenuItem item) {
     setState(() {
       item.quantity++;
