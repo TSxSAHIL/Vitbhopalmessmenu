@@ -4,7 +4,6 @@ class UBCart extends StatefulWidget {
   final List<MenuItem> cartItems;
 
   const UBCart({Key? key, required this.cartItems}) : super(key: key);
-
   @override
   // ignore: library_private_types_in_public_api
   _UBCartState createState() => _UBCartState();
