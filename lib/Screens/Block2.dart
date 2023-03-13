@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 class Block2 extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _Block2State createState() => _Block2State();
 }
 
