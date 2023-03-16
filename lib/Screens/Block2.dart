@@ -10,7 +10,6 @@ class Block2 extends StatefulWidget {
 
 class _Block2State extends State<Block2> {
   DateTime selectedDate = DateTime.now();
-
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
