@@ -26,7 +26,7 @@ class _Block2State extends State<Block2> {
   }
 
   final Map<String, List<String>> menu = {
-    // menu data...
+    // menu for the mess
     'Monday': [
       'Breakfast: Idly , Sambhar , Midhu Vada  , Sprouts',
       'Lunch: Rajma Chawal , Jeera Aloo Fry, Rice , Roti',
