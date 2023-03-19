@@ -17,7 +17,6 @@ class _Block2State extends State<Block2> {
       firstDate: DateTime(2022),
       lastDate: DateTime(2025),
     );
-
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
