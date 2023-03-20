@@ -7,7 +7,6 @@ class Block2 extends StatefulWidget {
   // ignore: library_private_types_in_public_api
   _Block2State createState() => _Block2State();
 }
-
 class _Block2State extends State<Block2> {
   DateTime selectedDate = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
