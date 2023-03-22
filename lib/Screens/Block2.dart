@@ -22,6 +22,7 @@ class _Block2State extends State<Block2> {
       });
     }
   }
+  
   final Map<String, List<String>> menu = {
     // menu of mess
     'Monday': [
