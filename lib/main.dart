@@ -8,7 +8,6 @@ import 'Screens/BoysMenuScreen.dart';
 import 'Screens/GirlsMenuScreen.dart';
 
 
-
 //Main APP Function
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
