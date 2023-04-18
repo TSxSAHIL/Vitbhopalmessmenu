@@ -172,4 +172,3 @@ class SortButton extends StatelessWidget {
     );
   }
 }
-
