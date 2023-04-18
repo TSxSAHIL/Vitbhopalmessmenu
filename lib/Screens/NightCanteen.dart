@@ -74,6 +74,7 @@ class _NightCanteenState extends State<NightCanteen> {
       _sortAscending = !_sortAscending;
     });
   }
+  
   void addToCart(int index) {
     setState(() {
       final item = _menuItems[index];
