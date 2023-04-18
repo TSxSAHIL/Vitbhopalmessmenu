@@ -51,7 +51,6 @@ class _NightCanteenState extends State<NightCanteen> {
   ];
 // Final Logics
 
-
   void initState() {
     super.initState();
     _cartItems = List.from(widget.selectedItems);
