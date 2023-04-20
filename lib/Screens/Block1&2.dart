@@ -6,7 +6,6 @@ import 'package:messmenu/Screens/GirlsMenuScreen.dart';
 import 'package:messmenu/Screens/NightCanteen.dart';
 import 'CartScreen.dart';
 
-
 class Block12 extends StatelessWidget {
   const Block12({Key? key}) : super(key: key);
   @override
