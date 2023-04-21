@@ -1,7 +1,5 @@
 // ignore_for_file: sort_child_properties_last, library_private_types_in_public_api, deprecated_member_use
-
 import 'package:flutter/material.dart';
-
 import 'CartScreen.dart';
 class NightCanteen extends StatefulWidget {
   NightCanteen({Key? key}) : super(key: key);
