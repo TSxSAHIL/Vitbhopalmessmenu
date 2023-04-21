@@ -76,6 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 } else if (value == 'settings') {
                   // handle settings menu item
                 }
+                
               },
             ),
             Switch(
