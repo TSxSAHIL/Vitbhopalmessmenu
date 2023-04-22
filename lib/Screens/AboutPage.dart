@@ -19,6 +19,7 @@ class AboutPage extends StatelessWidget {
       throw 'Could not launch $url';
     }
   }
+  
   Widget _buildClickableText(String text, String githubUrl) {
     return InkWell(
       onTap: () => _launchUrl(githubUrl),
