@@ -90,7 +90,6 @@ class _CartScreenState extends State<CartScreen> {
                 style: TextStyle(color: Color(0xff1D267D)),
               ),
             ),
-            
             TextButton(
               onPressed: () async {
                 Navigator.pop(context); // Close the dialog
