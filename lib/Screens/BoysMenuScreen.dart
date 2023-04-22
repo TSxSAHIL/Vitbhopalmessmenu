@@ -55,6 +55,7 @@ class BoysMenuScreen extends StatelessWidget {
     'Saturday',
     'Sunday'
   ];
+  
   String getCurrentDayName() {
     return dayNames[DateTime.now().weekday - 1];
   }
