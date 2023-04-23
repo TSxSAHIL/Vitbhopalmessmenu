@@ -7,7 +7,6 @@ class MenuScreen extends StatelessWidget {
     Menu(date: DateTime(2023, 5, 9), items: ['Item 4', 'Item 5', 'Item 6']),
     Menu(date: DateTime(2023, 5, 10), items: ['Item 7', 'Item 8', 'Item 9']),
   ];
-
   @override
   Widget build(BuildContext context) {
     final today = DateTime.now();
