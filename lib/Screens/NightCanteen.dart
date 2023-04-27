@@ -50,7 +50,6 @@ class _NightCanteenState extends State<NightCanteen> {
     {'item': 'Egg Dosa', 'price': 'Rs. 60'},
   ];
 
-
   final List<Map<String, dynamic>> _selectedItems = [];
   bool _sortAscending = true;
   //Logic for sort
