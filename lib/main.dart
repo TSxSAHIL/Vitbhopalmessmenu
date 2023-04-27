@@ -78,7 +78,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               },
             ),
-            
             Switch(
               value: isDarkThemeEnabled,
               onChanged: (value) {
