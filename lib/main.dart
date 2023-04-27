@@ -55,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.black,
       ),
+      
       home: Scaffold(
         appBar: AppBar(
           title: const Text("VIT BHOPAL MESS MENU"),
