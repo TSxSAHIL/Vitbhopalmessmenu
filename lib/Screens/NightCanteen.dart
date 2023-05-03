@@ -52,7 +52,6 @@ class _NightCanteenState extends State<NightCanteen> {
 
   final List<Map<String, dynamic>> _selectedItems = [];
   bool _sortAscending = true;
-
   void sortItems() {
     setState(() {
       if (_sortAscending) {
