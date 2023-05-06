@@ -9,7 +9,6 @@ class _PaymentPageState extends State<PaymentPage> {
   bool _isUPIExpanded = false;
   bool _isWalletsExpanded = false;
   bool _isNetbankingExpanded = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +20,7 @@ class _PaymentPageState extends State<PaymentPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
+            const Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 'Select Payment Options',
@@ -48,7 +47,7 @@ class _PaymentPageState extends State<PaymentPage> {
               children: [
                 ExpansionPanel(
                   headerBuilder: (BuildContext context, bool isExpanded) {
-                    return ListTile(
+                    return const ListTile(
                       leading: Icon(Icons.payment),
                       title: Text('UPI'),
                     );
@@ -85,7 +84,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
                 ExpansionPanel(
                   headerBuilder: (BuildContext context, bool isExpanded) {
-                    return ListTile(
+                    return const ListTile(
                       leading: Icon(Icons.account_balance_wallet),
                       title: Text('Wallets'),
                     );
@@ -141,7 +140,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
                 ExpansionPanel(
                   headerBuilder: (BuildContext context, bool isExpanded) {
-                    return ListTile(
+                    return const ListTile(
                       leading: Icon(Icons.account_balance),
                       title: Text('Netbanking'),
                     );
