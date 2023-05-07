@@ -4,6 +4,7 @@ class PaymentPage extends StatefulWidget {
   @override
   _PaymentPageState createState() => _PaymentPageState();
 }
+
 class _PaymentPageState extends State<PaymentPage> {
   bool _isUPIExpanded = false;
   bool _isWalletsExpanded = false;
