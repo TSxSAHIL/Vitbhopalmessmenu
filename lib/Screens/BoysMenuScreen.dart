@@ -1,96 +1,117 @@
 import 'package:flutter/material.dart';
 
 class BoysMenuScreen extends StatelessWidget {
-  const BoysMenuScreen({Key? key}) : super(key: key);
+  final Map<String, List<String>> menu = {
+    'Monday': [      'Breakfast: Sandwich',      'Lunch: Veg Pulao',      'Snacks: Bread Pakoda',      'Dinner: Rajma Chawal'    ],
+    'Tuesday': [      'Breakfast: Poha',      'Lunch: Paneer Butter Masala',      'Snacks: Samosa',      'Dinner: Roti Sabzi'    ],
+    'Wednesday': [      'Breakfast: Aloo Paratha',      'Lunch: Dal Tadka',      'Snacks: Maggi',      'Dinner: Chhole Bhature'    ],
+    'Thursday': [      'Breakfast: Upma',      'Lunch: Rajasthani Kadhi',      'Snacks: Aloo Tikki',      'Dinner: Veg Biryani'    ],
+    'Friday': [      'Breakfast: Idli Sambhar',      'Lunch: Veg Fried Rice',      'Snacks: Dhokla',      'Dinner: Chilli Paneer'    ],
+    'Saturday': [      'Breakfast: Poori Sabzi',      'Lunch: Palak Paneer',      'Snacks: Bread Cutlet',      'Dinner: Veg Handi'    ],
+    'Sunday': [      'Breakfast: Masala Dosa',      'Lunch: Dum Aloo',      'Snacks: Chana Chaat',      'Dinner: Mix Veg Curry'    ]
+  };
+
+  final List<String> dayNames = [    'Monday',    'Tuesday',    'Wednesday',    'Thursday',    'Friday',    'Saturday',    'Sunday'  ];
+
+  String getCurrentDayName() {
+    return dayNames[DateTime.now().weekday - 1];
+  }
+
+  List<String> getCurrentMenu() {
+    String currentDayName = getCurrentDayName();
+    return menu[currentDayName]!;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
-
-    final Map<String, Map<String, List<String>>> menu = {
-      '2022-05-08': {
-        'Breakfast': ['Poha', 'Paratha', 'Dahi'],
-        'Lunch': [
-          'Rajma',
-          'Jeera Rice',
-          'Mix Veg',
-          'Chapati',
-          'Salad',
-          'Papad'
-        ],
-        'Snacks': ['Samosa', 'Tea'],
-        'Dinner': ['Aloo Gobi', 'Rice', 'Chapati', 'Salad', 'Raita'],
-      },
-      '2022-05-11': {
-        'Breakfast': ['Bread Butter', 'Idli Sambhar', 'Tea'],
-        'Lunch': [
-          'Chole Masala',
-          'Rice',
-          'Tawa Roti',
-          'Raita',
-          'Salad',
-          'Papad'
-        ],
-        'Snacks': ['Poha', 'Tea'],
-        'Dinner': ['Malai Kofta', 'Jeera Rice', 'Chapati', 'Salad', 'Raita'],
-      },
-    };
-
-    final todaysMenu = menu[today.toString()];
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Boys Menu'),
-        backgroundColor: const Color(0xff1D267D),
+        title: const Text('Boys Mess Menu'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Today\'s Menu - ${today.toString()}',
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              'Menu for Today (${getCurrentDayName()})',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            const SizedBox(height: 20),
-            _buildMenuList('Breakfast', todaysMenu?['Breakfast'] ?? []),
-            const SizedBox(height: 20),
-            _buildMenuList('Lunch', todaysMenu?['Lunch'] ?? []),
-            const SizedBox(height: 20),
-            _buildMenuList('Snacks', todaysMenu?['Snacks'] ?? []),
-            const SizedBox(height: 20),
-            _buildMenuList('Dinner', todaysMenu?['Dinner'] ?? []),
+            const SizedBox(height: 16.0),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 1,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Breakfast',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 8.0),
+                          Text(
+                            getCurrentMenu()[0].substring(11),
+                            style: const TextStyle(fontSize: 18.0),
+                          ),
+                          const SizedBox(height: 16.0),
+                          const Text(
+                            'Lunch',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 8.0),
+                          Text(
+                            getCurrentMenu()[1].substring(7),
+                            style:const TextStyle(fontSize: 18.0),
+                          ),
+                          const SizedBox(height: 16.0),
+                          const Text(
+                            'Snacks',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 8.0),
+                          Text(
+                            getCurrentMenu()[2].substring(8),
+                            style: const TextStyle(fontSize: 18.0),
+                          ),
+                          const SizedBox(height: 16.0),
+                          const Text(
+                            'Dinner',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 8.0),
+                          Text(
+                            getCurrentMenu()[3].substring(8),
+                            style: const TextStyle(fontSize: 18.0),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildMenuList(String title, List<String> items) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 10),
-        if (items.isNotEmpty)
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: items
-                .map(
-                  (item) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Text(item),
-                  ),
-                )
-                .toList(),
-          )
-        else
-          const Text('No items found.'),
-      ],
     );
   }
 }
