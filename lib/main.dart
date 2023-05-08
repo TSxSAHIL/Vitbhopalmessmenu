@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/boys_hostel.jpg'),
                       fit: BoxFit.cover,
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration:const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/girls_hostel.jpg'),
                       fit: BoxFit.cover,
