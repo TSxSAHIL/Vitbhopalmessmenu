@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class BoysMenuScreen extends StatelessWidget {
   final Map<String, List<String>> menu = {
     'Monday': [
-      'Breakfast: Sandwich',
+      'Breakfast: Idly Sambhar/Chutney Banana Midhu Vada',
       'Lunch: Veg Pulao',
       'Snacks: Bread Pakoda',
       'Dinner: Rajma Chawal'
     ],
     'Tuesday': [
-      'Breakfast: Poha',
+      'Breakfast: Idly Sambhar/Chutney Banana Midhu Vada',
       'Lunch: Paneer Butter Masala',
       'Snacks: Samosa',
       'Dinner: Roti Sabzi'
@@ -115,12 +115,14 @@ class BoysMenuScreen extends StatelessWidget {
                     title: Text(
                       mealType,
                       style: const TextStyle(
+                        fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     children: [
-                      ListTile(
-                        title: Text(
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16.0),
+                        child: Text(
                           mealName,
                           style: const TextStyle(fontSize: 16.0),
                         ),
@@ -136,3 +138,6 @@ class BoysMenuScreen extends StatelessWidget {
     );
   }
 }
+
+// The code above displays the menu for a boys mess. Given the day of the week, it displays the menu for that day.
+// Each day has four meals: breakfast, lunch, snacks, and dinner. The menu is displayed in an ExpansionTile widget.
