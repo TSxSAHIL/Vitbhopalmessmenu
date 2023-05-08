@@ -22,96 +22,78 @@ class BoysMenuScreen extends StatelessWidget {
     return menu[currentDayName]!;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Boys Mess Menu'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Menu for Today (${getCurrentDayName()})',
-              style: TextStyle(
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-              ),
+  
+  
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text('Boys Mess Menu'),
+    ),
+    body: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+           Text(
+            'Menu for Today (${getCurrentDayName()})',
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
             ),
-            const SizedBox(height: 16.0),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 1,
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Breakfast',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                            ),
+          ),
+          const SizedBox(height: 16.0),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 4,
+              itemBuilder: (BuildContext context, int index) {
+                String mealType = '';
+                String mealName = '';
+                switch (index) {
+                  case 0:
+                    mealType = 'Breakfast';
+                    mealName = getCurrentMenu()[0].substring(11);
+                    break;
+                  case 1:
+                    mealType = 'Lunch';
+                    mealName = getCurrentMenu()[1].substring(7);
+                    break;
+                  case 2:
+                    mealType = 'Snacks';
+                    mealName = getCurrentMenu()[2].substring(8);
+                    break;
+                  case 3:
+                    mealType = 'Dinner';
+                    mealName = getCurrentMenu()[3].substring(8);
+                    break;
+                }
+                return Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          mealType,
+                          style: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
                           ),
-                          const SizedBox(height: 8.0),
-                          Text(
-                            getCurrentMenu()[0].substring(11),
-                            style: const TextStyle(fontSize: 18.0),
-                          ),
-                          const SizedBox(height: 16.0),
-                          const Text(
-                            'Lunch',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8.0),
-                          Text(
-                            getCurrentMenu()[1].substring(7),
-                            style:const TextStyle(fontSize: 18.0),
-                          ),
-                          const SizedBox(height: 16.0),
-                          const Text(
-                            'Snacks',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8.0),
-                          Text(
-                            getCurrentMenu()[2].substring(8),
-                            style: const TextStyle(fontSize: 18.0),
-                          ),
-                          const SizedBox(height: 16.0),
-                          const Text(
-                            'Dinner',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8.0),
-                          Text(
-                            getCurrentMenu()[3].substring(8),
-                            style: const TextStyle(fontSize: 18.0),
-                          ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 8.0),
+                        Text(
+                          mealName,
+                          style: const TextStyle(fontSize: 18.0),
+                        ),
+                      ],
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-    );
-  }
-}
+    ),
+  );
+}}
