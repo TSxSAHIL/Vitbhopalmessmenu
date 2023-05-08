@@ -27,17 +27,27 @@ class GirlsMenuScreen extends StatelessWidget {
 @override
 Widget build(BuildContext context) {
   return Scaffold(
-    appBar: AppBar(
-      title: const Text('Girls Hostel Mess Menu'),
+  appBar: AppBar(
+    title: const Text('Girls Mess Menu'),
+    backgroundColor: Colors.green, // set a custom app bar background color
+    centerTitle: true, // center the title
+  ),
+  body: Container(
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage('assets/images/background.png'),
+        fit: BoxFit.cover,
+      ),
     ),
-    body: Padding(
+    child: Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(
+          const SizedBox(height: 16.0),
+          Text(
             'Menu for Today (${getCurrentDayName()})',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
@@ -68,25 +78,9 @@ Widget build(BuildContext context) {
                     break;
                 }
                 return Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          mealType,
-                          style: const TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 8.0),
-                        Text(
-                          mealName,
-                          style: const TextStyle(fontSize: 18.0),
-                        ),
-                      ],
-                    ),
+                  child: ListTile(
+                    title: Text(mealType),
+                    subtitle: Text(mealName),
                   ),
                 );
               },
@@ -95,5 +89,7 @@ Widget build(BuildContext context) {
         ],
       ),
     ),
-  );
+  ),
+)
+;
 }}
