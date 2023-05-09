@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BoysMenuScreen extends StatelessWidget {
+class Block2 extends StatelessWidget {
   final Map<String, List<String>> menu = {
     'Monday': [
       'Breakfast: Idly , Sambhar , Midhu Vada',
@@ -69,7 +69,7 @@ class BoysMenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Block 1 Mess Menu'),
+        title: const Text('Block 2 Mess Menu'),
         backgroundColor: Color(0xff1D267D),
         centerTitle: false,
       ),
@@ -136,6 +136,3 @@ class BoysMenuScreen extends StatelessWidget {
     );
   }
 }
-
-// The code above displays the menu for a boys mess. Given the day of the week, it displays the menu for that day.
-// Each day has four meals: breakfast, lunch, snacks, and dinner. The menu is displayed in an ExpansionTile widget.
