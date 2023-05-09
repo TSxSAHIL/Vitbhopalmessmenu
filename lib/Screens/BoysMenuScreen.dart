@@ -4,9 +4,9 @@ class BoysMenuScreen extends StatelessWidget {
   final Map<String, List<String>> menu = {
     'Monday': [
       'Breakfast: Idly , Sambhar , Midhu Vada',
-      'Lunch: Rajma Chawal , Rice , Roti',
+      'Lunch: Rajma Chawal , Jeera Aloo Fry , Rice , Roti',
       'Snacks: Vada Pav & Tea',
-      'Dinner: Egg Bhurji Masala , Rice , Roti'
+      'Dinner: Egg Bhurji Masala , Dum Aloo , Rice , Roti'
     ],
     'Tuesday': [
       'Breakfast: Veg Parantha ,  MixVeg & Tea ',
@@ -42,7 +42,7 @@ class BoysMenuScreen extends StatelessWidget {
       'Breakfast: Masala Dosa',
       'Lunch: Paneer & Chicken Biryani , Vegetable Raita',
       'Snacks: Dhokla & Tea',
-      'Dinner: Dal Makhani ,Tinda Aloo , Rice , Roti '
+      'Dinner: Dal Makhani ,Tinda Aloo , Gulab Jamun , Rice , Roti '
     ]
   };
 
