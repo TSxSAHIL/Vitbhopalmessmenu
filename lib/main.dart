@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:messmenu/Screens/AboutPage.dart';
 import 'package:messmenu/Screens/Block1&2.dart';
 import 'Screens/BoysMenuScreen.dart';
 import 'Screens/GirlsMenuScreen.dart';
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.grey[900],
+        scaffoldBackgroundColor: Colors.black,
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
@@ -51,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.grey[900],
+        scaffoldBackgroundColor: Colors.black,
       ),
       home: Scaffold(
         appBar: AppBar(
@@ -61,12 +62,20 @@ class _HomeScreenState extends State<HomeScreen> {
             PopupMenuButton(
               itemBuilder: (BuildContext context) => [
                 const PopupMenuItem(
-                  child: Text('Settings'),
-                ),
-                const PopupMenuItem(
                   child: Text('About'),
+                  value: 'about',
                 ),
               ],
+              onSelected: (value) {
+                if (value == 'about') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AboutPage()),
+                  );
+                } else if (value == 'settings') {
+                  // handle settings menu item
+                }
+              },
             ),
             Switch(
               value: isDarkThemeEnabled,
@@ -87,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Block12()),
+                    MaterialPageRoute(builder: (context) => const Block12()),
                   );
                 },
                 child: MouseRegion(
@@ -102,8 +111,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(19.0),
                     child: Container(
+                      
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: [
@@ -119,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           fit: BoxFit.cover,
                         ),
                         gradient: isBoysContainerHovered
-                            ? LinearGradient(
+                            ? const LinearGradient(
                                 begin: Alignment.centerLeft,
                                 end: Alignment.centerRight,
                                 colors: [
@@ -155,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(19.0),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
