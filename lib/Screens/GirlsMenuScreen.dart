@@ -3,46 +3,46 @@ import 'package:flutter/material.dart';
 class GirlsMenuScreen extends StatelessWidget {
   final Map<String, List<String>> menu = {
     'Monday': [
-      'Breakfast: Sandwich',
-      'Lunch: Veg Pulao',
-      'Snacks: Bread Pakoda',
-      'Dinner: Rajma Chawal'
+      'Breakfast: Idly , Sambhar , Midhu Vada',
+      'Lunch: Rajma Chawal , Rice , Roti , Buttermilk',
+      'Snacks: Aloo Chat & Tea',
+      'Dinner: Egg Bhurji Masala ,Rajasthani Bhindi , Rice , Roti'
     ],
     'Tuesday': [
-      'Breakfast: Poha',
-      'Lunch: Paneer Butter Masala',
-      'Snacks: Samosa',
-      'Dinner: Roti Sabzi'
+      'Breakfast: Poha , Uppuma , Jalebi , Banana',
+      'Lunch: Mix Veg , Plain Rice , Masoor Dal , Roti , Curd',
+      'Snacks: Pani Poori & Tea',
+      'Dinner: Roti , Jeera Rice , Choley , Plain Dal'
     ],
     'Wednesday': [
-      'Breakfast: Aloo Paratha',
-      'Lunch: Dal Tadka',
-      'Snacks: Maggi',
-      'Dinner: Chhole Bhature'
+      'Breakfast: Pav Bhaji',
+      'Lunch: Dal Tadka , Rice , Roti , Veg Koftha',
+      'Snacks: Kachori / Chenna & Tea',
+      'Dinner: Dal Tadka , Chicken 65 , Paneer Bhurji , Rice & Roti'
     ],
     'Thursday': [
-      'Breakfast: Upma',
-      'Lunch: Rajasthani Kadhi',
-      'Snacks: Aloo Tikki',
-      'Dinner: Veg Biryani'
+      'Breakfast: Pongal , Vad , Sambhar ,Banana',
+      'Lunch: Dum Aloo , Mix dal , Roti , Ghee Rice',
+      'Snacks: Chowmin & Tea',
+      'Dinner: Sweet Corn Soup , Aloo Gobhi , Egg Bhurji , Rice , Roti'
     ],
     'Friday': [
-      'Breakfast: Idli Sambhar',
-      'Lunch: Veg Fried Rice',
-      'Snacks: Dhokla',
-      'Dinner: Chilli Paneer'
+      'Breakfast: Chole Bhature',
+      'Lunch: Peas Masala , Masala Dal , Rice , Roti',
+      'Snacks: Papadi Chat & Tea',
+      'Dinner: Chilly Paneer , Butter Chicken , Rice , Roti'
     ],
     'Saturday': [
-      'Breakfast: Poori Sabzi',
-      'Lunch: Palak Paneer',
-      'Snacks: Bread Cutlet',
-      'Dinner: Veg Handi'
+      'Breakfast: Masala Dosa',
+      'Lunch: Masoor Dal , Kaju Rice , Kadhai Chole , Curd',
+      'Snacks: Onion Pakoda & Tea ',
+      'Dinner: Veg Manchurian , Fried Rice , Rice , Roti'
     ],
     'Sunday': [
-      'Breakfast: Masala Dosa',
-      'Lunch: Dum Aloo',
-      'Snacks: Chana Chaat',
-      'Dinner: Mix Veg Curry'
+      'Breakfast: Paneer Parantha ',
+      'Lunch: Paneer & Chicken Biryani , Boondi Raita',
+      'Snacks: Samosa',
+      'Dinner: Kadi Pakoda , Gulab Jamun , Roti , Rice '
     ]
   };
 

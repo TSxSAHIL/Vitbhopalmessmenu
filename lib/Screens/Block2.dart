@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 class Block2 extends StatelessWidget {
   final Map<String, List<String>> menu = {
     'Monday': [
-      'Breakfast: Idly , Sambhar , Midhu Vada',
-      'Lunch: Rajma Chawal , Rice , Roti',
+      'Breakfast: Idly , Sambhar , Midhu Vada , Boiled Egg , Sprouts',
+      'Lunch: Rajma Chawal , Jeera Aloo Fry, Rice , Roti',
       'Snacks: Vada Pav & Tea',
-      'Dinner: Egg Bhurji Masala , Rice , Roti'
+      'Dinner: Egg Bhurji Masala , Dum Aloo , Rice , Roti'
     ],
     'Tuesday': [
-      'Breakfast: Veg Parantha ,  MixVeg & Tea ',
-      'Lunch: Chole Masala , Poori , Rice , Curd , Roti',
+      'Breakfast: Pav Bhaji / Vermicilli Upma ',
+      'Lunch: Soya Chunks , Masala Dal , Rice , Roti',
       'Snacks: BhelPuri & Tea',
-      'Dinner: Soya Chunks , Halwa , Masala Dal , Rice , Roti'
+      'Dinner: Chole Masala , Poori, Halwa , Masala Dal , Rice , Roti'
     ],
     'Wednesday': [
       'Breakfast: Uthappam & Tea',
@@ -33,8 +33,8 @@ class Block2 extends StatelessWidget {
       'Dinner: Kadhai Paneer , Butter Chicken , Rice , Roti'
     ],
     'Saturday': [
-      'Breakfast: Pav Bhaji',
-      'Lunch: Chana Dal , Baigan Bharta ,Sambhar , Rice , Roti',
+      'Breakfast: Parantha ',
+      'Lunch: Chana Dal Khichdi , Baigan Bharta ,Sambhar , Rice , Roti',
       'Snacks: Samosa & Tea',
       'Dinner: Gobi Manchurian , Fried Rice , Rice , Roti'
     ],
