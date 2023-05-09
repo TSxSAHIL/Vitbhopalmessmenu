@@ -70,7 +70,7 @@ class GirlsMenuScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Girls Mess Menu'),
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xff1D267D),
         centerTitle: true,
       ),
       body: Padding(

@@ -3,46 +3,46 @@ import 'package:flutter/material.dart';
 class BoysMenuScreen extends StatelessWidget {
   final Map<String, List<String>> menu = {
     'Monday': [
-      'Breakfast: Idly Sambhar/Chutney Banana Midhu Vada',
-      'Lunch: Veg Pulao',
-      'Snacks: Bread Pakoda',
-      'Dinner: Rajma Chawal'
+      'Breakfast: Idly , Sambhar , Midhu Vada',
+      'Lunch: Rajma Chawal , Rice , Roti',
+      'Snacks: Vada Pav & Tea',
+      'Dinner: Egg Bhurji Masala , Rice , Roti'
     ],
     'Tuesday': [
-      'Breakfast: Idly Sambhar/Chutney Banana Midhu Vada',
-      'Lunch: Paneer Butter Masala',
-      'Snacks: Samosa',
-      'Dinner: Roti Sabzi'
+      'Breakfast: Veg Parantha ,  MixVeg & Tea ',
+      'Lunch: Chole Masala , Poori , Rice , Curd , Roti',
+      'Snacks: BhelPuri & Tea',
+      'Dinner: Soya Chunks , Halwa , Masala Dal , Rice , Roti'
     ],
     'Wednesday': [
-      'Breakfast: Aloo Paratha',
-      'Lunch: Dal Tadka',
-      'Snacks: Maggi',
-      'Dinner: Chhole Bhature'
+      'Breakfast: Uthappam & Tea',
+      'Lunch: Veg Hariyali , Palak Sabji & Curd Rice',
+      'Snacks: Pani Poori',
+      'Dinner: Butter Paneer , Capsicum Chicken , Rice , Roti'
     ],
     'Thursday': [
-      'Breakfast: Upma',
-      'Lunch: Rajasthani Kadhi',
-      'Snacks: Aloo Tikki',
-      'Dinner: Veg Biryani'
+      'Breakfast: Poha , Jalebi',
+      'Lunch: Navratan Korma , Veg Pulao, ButterMilk ',
+      'Snacks: SweetCorn Salad & Tea',
+      'Dinner: Green Peas Masala , Egg Curry , Rice , Roti'
     ],
     'Friday': [
-      'Breakfast: Idli Sambhar',
-      'Lunch: Veg Fried Rice',
-      'Snacks: Dhokla',
-      'Dinner: Chilli Paneer'
+      'Breakfast: Chole Bhature',
+      'Lunch: Veg Biryani , Raita , Masala Dal , Roti',
+      'Snacks: Cake/Patties & Tea',
+      'Dinner: Kadhai Paneer , Butter Chicken , Rice , Roti'
     ],
     'Saturday': [
-      'Breakfast: Poori Sabzi',
-      'Lunch: Palak Paneer',
-      'Snacks: Bread Cutlet',
-      'Dinner: Veg Handi'
+      'Breakfast: Pav Bhaji',
+      'Lunch: Chana Dal , Baigan Bharta ,Sambhar , Rice , Roti',
+      'Snacks: Samosa & Tea',
+      'Dinner: Gobi Manchurian , Fried Rice , Rice , Roti'
     ],
     'Sunday': [
       'Breakfast: Masala Dosa',
-      'Lunch: Dum Aloo',
-      'Snacks: Chana Chaat',
-      'Dinner: Mix Veg Curry'
+      'Lunch: Paneer & Chicken Biryani , Vegetable Raita',
+      'Snacks: Dhokla & Tea',
+      'Dinner: Dal Makhani ,Tinda Aloo , Rice , Roti '
     ]
   };
 
@@ -69,8 +69,8 @@ class BoysMenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Boys Mess Menu'),
-        backgroundColor: Colors.green,
+        title: const Text('Boys Hostel Mess Menu'),
+        backgroundColor: Color(0xff1D267D),
         centerTitle: true,
       ),
       body: Padding(
@@ -78,15 +78,15 @@ class BoysMenuScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 10.0),
             Text(
-              'Menu for Today (${getCurrentDayName()})',
+              'Menu for ${getCurrentDayName()}',
               style: const TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 26.0),
             Expanded(
               child: ListView.builder(
                 itemCount: 4,
@@ -115,14 +115,12 @@ class BoysMenuScreen extends StatelessWidget {
                     title: Text(
                       mealType,
                       style: const TextStyle(
-                        fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 16.0),
-                        child: Text(
+                      ListTile(
+                        title: Text(
                           mealName,
                           style: const TextStyle(fontSize: 16.0),
                         ),
