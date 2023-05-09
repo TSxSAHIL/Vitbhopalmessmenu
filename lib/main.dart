@@ -36,6 +36,18 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("VIT BHOPAL MESS MENU"),
         backgroundColor: const Color(0xff1D267D),
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (BuildContext context) => [
+              const PopupMenuItem(
+                child: Text('Settings'),
+              ),
+              const PopupMenuItem(
+                child: Text('About'),
+              ),
+            ],
+          ),
+        ],
       ),
       body: Flex(
         direction: Axis.vertical,
@@ -61,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   });
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
@@ -114,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   });
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),

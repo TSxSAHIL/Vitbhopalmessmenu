@@ -68,11 +68,6 @@ class BoysMenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Block 1 Mess Menu'),
-        backgroundColor: Color(0xff1D267D),
-        centerTitle: false,
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -80,7 +75,7 @@ class BoysMenuScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 10.0),
             Text(
-              'Menu for ${getCurrentDayName()}',
+              'Menu for Today (${getCurrentDayName()})',
               style: const TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
