@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.messmenu">
+    package="com.codecraft.vitbmessmenu">
    <application
-        android:label="messmenu"
+        android:label="Vit Bhopal Mess Menu"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

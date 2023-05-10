@@ -1,4 +1,4 @@
-package com.example.messmenu
+package com.codecraft.vitbmessmenu
 
 import io.flutter.embedding.android.FlutterActivity
 

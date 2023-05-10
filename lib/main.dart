@@ -1,6 +1,8 @@
+// ignore_for_file: unused_import
 import 'package:flutter/material.dart';
 import 'package:messmenu/Screens/AboutPage.dart';
 import 'package:messmenu/Screens/Block1&2.dart';
+import 'package:messmenu/Screens/Splashscreen.dart';
 import 'Screens/BoysMenuScreen.dart';
 import 'Screens/GirlsMenuScreen.dart';
 
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.black,
       ),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
