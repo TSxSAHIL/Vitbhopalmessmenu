@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Menu App',
+      
       theme: ThemeData(
         brightness: Brightness.light,
         primarySwatch: Colors.blue,
