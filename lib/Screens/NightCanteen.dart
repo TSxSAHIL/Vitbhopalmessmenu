@@ -79,7 +79,7 @@ class _NightCanteenState extends State<NightCanteen> {
     return SingleChildScrollView(
       child: DataTable(
         columns: [
-          DataColumn(label: Text('Item')),
+          const DataColumn(label: Text('Item')),
           DataColumn(
               label: Row(
             children: [
