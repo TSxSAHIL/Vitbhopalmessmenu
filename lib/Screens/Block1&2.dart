@@ -6,6 +6,8 @@ import 'package:messmenu/Screens/BoysMenuScreen.dart';
 import 'package:messmenu/Screens/GirlsMenuScreen.dart';
 import 'package:messmenu/Screens/NightCanteen.dart';
 
+import 'CartScreen.dart';
+
 class Block12 extends StatelessWidget {
   const Block12({Key? key}) : super(key: key);
 
@@ -16,6 +18,19 @@ class Block12 extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Boys Hostel Menu"),
+          actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CartScreen(selectedItems: [],),
+                ),
+              );
+            },
+          ),
+        ],
           backgroundColor: const Color(0xff1D267D),
           bottom: const TabBar(
             tabs: [
