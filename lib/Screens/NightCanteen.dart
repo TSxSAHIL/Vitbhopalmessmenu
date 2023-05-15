@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'CartScreen.dart';
+
 class NightCanteen extends StatefulWidget {
   NightCanteen({Key? key}) : super(key: key);
 
@@ -49,57 +51,84 @@ class _NightCanteenState extends State<NightCanteen> {
     {'item': 'Egg Dosa', 'price': 'Rs. 60'},
   ];
 
-  bool _sortAscending = true;
-  void sortItems() {
-  setState(() {
-    if (_sortAscending) {
-      _menuItems.sort((a, b) {
-        double? aPrice = double.tryParse(a['price'].substring(4));
-        double? bPrice = double.tryParse(b['price'].substring(4));
-        if (aPrice == null) return 1;
-        if (bPrice == null) return -1;
-        return aPrice.compareTo(bPrice);
-      });
-    } else {
-      _menuItems.sort((a, b) {
-        double? aPrice = double.tryParse(a['price'].substring(4));
-        double? bPrice = double.tryParse(b['price'].substring(4));
-        if (aPrice == null) return 1;
-        if (bPrice == null) return -1;
-        return bPrice.compareTo(aPrice);
-      });
-    }
-    _sortAscending = !_sortAscending;
-  });
-}
+  List<Map<String, dynamic>> _selectedItems = [];
 
+  bool _sortAscending = true;
+
+  void sortItems() {
+    setState(() {
+      if (_sortAscending) {
+        _menuItems.sort((a, b) {
+          double? aPrice = double.tryParse(a['price'].substring(4));
+          double? bPrice = double.tryParse(b['price'].substring(4));
+          if (aPrice == null) return 1;
+          if (bPrice == null) return -1;
+          return aPrice.compareTo(bPrice);
+        });
+      } else {
+        _menuItems.sort((a, b) {
+          double? aPrice = double.tryParse(a['price'].substring(4));
+          double? bPrice = double.tryParse(b['price'].substring(4));
+          if (aPrice == null) return 1;
+          if (bPrice == null) return -1;
+          return bPrice.compareTo(aPrice);
+        });
+      }
+      _sortAscending = !_sortAscending;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: DataTable(
-        columns: [
-          const DataColumn(label: Text('Item')),
-          DataColumn(
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: DataTable(
+          columns: [
+            const DataColumn(label: Text('Item')),
+            DataColumn(
               label: Row(
-            children: [
-              Text('Price'),
-              SortButton(
-                  sortAscending: _sortAscending,
-                  onPressed: sortItems,
+                children: [
+                  Text('Price'),
+                  SortButton(
+                    sortAscending: _sortAscending,
+                    onPressed: sortItems,
+                  ),
+                ],
               ),
-            ],
-          )),
-        ],
-        rows: List<DataRow>.generate(
-          _menuItems.length,
-          (index) => DataRow(
-            cells: [
-              DataCell(Text(_menuItems[index]['item'])),
-              DataCell(Text(_menuItems[index]['price'])),
-            ],
+            ),
+            DataColumn(label: Text('Add to Cart')),
+          ],
+          rows: List<DataRow>.generate(
+            _menuItems.length,
+            (index) => DataRow(
+              cells: [
+                DataCell(Text(_menuItems[index]['item'])),
+                DataCell(Text(_menuItems[index]['price'])),
+                DataCell(
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _selectedItems.add(_menuItems[index]);
+                      });
+                    },
+                    icon: Icon(Icons.add_shopping_cart),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CartScreen(selectedItems: _selectedItems),
+            ),
+          );
+        },
+        child: Icon(Icons.shopping_cart),
       ),
     );
   }
@@ -125,3 +154,4 @@ class SortButton extends StatelessWidget {
     );
   }
 }
+
