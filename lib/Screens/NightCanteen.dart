@@ -50,7 +50,6 @@ class _NightCanteenState extends State<NightCanteen> {
   ];
 
   bool _sortAscending = true;
-
   void sortItems() {
   setState(() {
     if (_sortAscending) {
