@@ -18,6 +18,7 @@ class Block12 extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Boys Hostel Menu"),
+          
           actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
