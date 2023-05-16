@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     // Add a delay before navigating to the home screen
     Timer(
-      const Duration(seconds: 3),
+      const Duration(milliseconds: 1800),
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const HomeScreen()),
@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 200,
             ),
             const SizedBox(height: 16),
-            const CircularProgressIndicator(),
+            const LinearProgressIndicator(),
           ],
         ),
       ),
