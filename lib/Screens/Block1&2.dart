@@ -15,7 +15,6 @@ class Block12 extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Boys Hostel Menu"),
@@ -32,6 +31,7 @@ class Block12 extends StatelessWidget {
             },
           ),
         ],
+        
           backgroundColor: const Color(0xff1D267D),
           bottom: const TabBar(
             tabs: [
