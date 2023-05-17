@@ -25,7 +25,8 @@ class _CartScreenState extends State<CartScreen> {
 
   void increaseQuantity(int index) {
     setState(() {
-      cartItems[index]['quantity']++;
+      final item = cartItems[index];
+      cartItems[index]['quantity'] = item['quantity'] != null ? item['quantity'] + 1 : 1;
     });
   }
 
@@ -33,7 +34,9 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     final int itemCount = cartItems.length;
     final double totalAmount = cartItems.fold(
-        0, (sum, item) => sum + double.parse(item['price'].substring(4)) * item['quantity']);
+        0,
+        (sum, item) => sum +
+            (item['price'] != null ? double.parse(item['price'].substring(4)) * (item['quantity'] ?? 1) : 0));
 
     return Scaffold(
       appBar: AppBar(
@@ -63,9 +66,9 @@ class _CartScreenState extends State<CartScreen> {
                       padding: EdgeInsets.only(right: 16),
                     ),
                     child: ListTile(
-                      title: Text(item['item']),
+                      title: Text(item['item'] ?? ''),
                       subtitle: Text(
-                        'Rs. ${item['price']} x ${item['quantity']}',
+                        'Rs. ${item['price'] ?? ''} x ${item['quantity'] ?? 1}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
