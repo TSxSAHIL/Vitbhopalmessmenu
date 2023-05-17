@@ -1,14 +1,39 @@
 import 'package:flutter/material.dart';
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   final List<Map<String, dynamic>> selectedItems;
 
   CartScreen({Key? key, required this.selectedItems}) : super(key: key);
 
   @override
+  _CartScreenState createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  List<Map<String, dynamic>> cartItems = [];
+
+  @override
+  void initState() {
+    super.initState();
+    cartItems = widget.selectedItems;
+  }
+
+  void deleteItem(int index) {
+    setState(() {
+      cartItems.removeAt(index);
+    });
+  }
+
+  void increaseQuantity(int index) {
+    setState(() {
+      cartItems[index]['quantity']++;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final int itemCount = selectedItems.length;
-    final double totalAmount = selectedItems.fold(
-        0, (sum, item) => sum + double.parse(item['price'].substring(4)));
+    final int itemCount = cartItems.length;
+    final double totalAmount = cartItems.fold(
+        0, (sum, item) => sum + double.parse(item['price'].substring(4)) * item['quantity']);
 
     return Scaffold(
       appBar: AppBar(
@@ -17,18 +42,39 @@ class CartScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          if (selectedItems.isNotEmpty)
+          if (cartItems.isNotEmpty)
             Expanded(
               child: ListView.builder(
-                itemCount: selectedItems.length,
+                itemCount: cartItems.length,
                 itemBuilder: (context, index) {
-                  final item = selectedItems[index];
-                  return ListTile(
-                    title: Text(item['item']),
-                    subtitle: Text(
-                      item['price'],
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                  final item = cartItems[index];
+                  return Dismissible(
+                    key: UniqueKey(),
+                    onDismissed: (direction) {
+                      deleteItem(index);
+                    },
+                    background: Container(
+                      color: Colors.red,
+                      child: Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                      ),
+                      alignment: Alignment.centerRight,
+                      padding: EdgeInsets.only(right: 16),
+                    ),
+                    child: ListTile(
+                      title: Text(item['item']),
+                      subtitle: Text(
+                        'Rs. ${item['price']} x ${item['quantity']}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.add),
+                        onPressed: () {
+                          increaseQuantity(index);
+                        },
                       ),
                     ),
                   );
