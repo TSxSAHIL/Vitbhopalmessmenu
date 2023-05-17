@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class CartScreen extends StatefulWidget {
   final List<Map<String, dynamic>> selectedItems;
 
@@ -10,33 +11,43 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   List<Map<String, dynamic>> cartItems = [];
+  double totalAmount = 0;
 
   @override
   void initState() {
     super.initState();
     cartItems = widget.selectedItems;
+    calculateTotalAmount();
+  }
+
+  void calculateTotalAmount() {
+    totalAmount = cartItems.fold(
+      0,
+      (sum, item) => sum + double.parse(item['price'].substring(4)) * (item['quantity'] ?? 1),
+    );
   }
 
   void deleteItem(int index) {
     setState(() {
       cartItems.removeAt(index);
+      calculateTotalAmount();
     });
   }
 
   void increaseQuantity(int index) {
     setState(() {
       final item = cartItems[index];
-      cartItems[index]['quantity'] = item['quantity'] != null ? item['quantity'] + 1 : 1;
+      if (item['quantity'] != null) {
+        cartItems[index]['quantity'] = item['quantity'] + 1;
+        final double itemPrice = double.parse(item['price'].substring(4));
+        totalAmount += itemPrice; // Increment the total amount
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final int itemCount = cartItems.length;
-    final double totalAmount = cartItems.fold(
-        0,
-        (sum, item) => sum +
-            (item['price'] != null ? double.parse(item['price'].substring(4)) * (item['quantity'] ?? 1) : 0));
 
     return Scaffold(
       appBar: AppBar(
@@ -73,11 +84,29 @@ class _CartScreenState extends State<CartScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      trailing: IconButton(
-                        icon: Icon(Icons.add),
-                        onPressed: () {
-                          increaseQuantity(index);
-                        },
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.remove),
+                            onPressed: () {
+                              setState(() {
+                                final item = cartItems[index];
+                                if (item['quantity'] != null && item['quantity'] > 1) {
+                                  cartItems[index]['quantity'] = item['quantity'] - 1;
+                                  final double itemPrice = double.parse(item['price'].substring(4));
+                                  totalAmount -= itemPrice; // Decrement the total amount
+                                }
+                              });
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.add),
+                            onPressed: () {
+                              increaseQuantity(index);
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   );
