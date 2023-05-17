@@ -1,16 +1,13 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
-
 import 'CartScreen.dart';
-
 class NightCanteen extends StatefulWidget {
   NightCanteen({Key? key}) : super(key: key);
 
   @override
   _NightCanteenState createState() => _NightCanteenState();
 }
-
 class _NightCanteenState extends State<NightCanteen> {
   final List<Map<String, dynamic>> _menuItems = [
     {'item': 'Bread Omelette', 'price': 'Rs. 45'},
