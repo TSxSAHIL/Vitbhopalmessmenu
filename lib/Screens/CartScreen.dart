@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 class CartScreen extends StatelessWidget {
   final List<Map<String, dynamic>> selectedItems;
 
