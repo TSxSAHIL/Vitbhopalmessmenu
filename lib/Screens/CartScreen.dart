@@ -12,16 +12,23 @@ class CartScreen extends StatelessWidget {
         title: Text('Cart'),
         backgroundColor: Color(0xff1D267D),
       ),
-      body: ListView.builder(
-        itemCount: selectedItems.length,
-        itemBuilder: (context, index) {
-          final item = selectedItems[index];
-          return ListTile(
-            title: Text(item['item']),
-            subtitle: Text(item['price']),
-          );
-        },
-      ),
+      body: selectedItems.isNotEmpty
+          ? ListView.builder(
+              itemCount: selectedItems.length,
+              itemBuilder: (context, index) {
+                final item = selectedItems[index];
+                return ListTile(
+                  title: Text(item['item']),
+                  subtitle: Text(item['price']),
+                );
+              },
+            )
+          : Center(
+              child: Text(
+                'No items selected.',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
     );
   }
 }
