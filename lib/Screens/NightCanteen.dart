@@ -78,10 +78,17 @@ class _NightCanteenState extends State<NightCanteen> {
     });
   }
 
+  void addToCart(int index) {
+    setState(() {
+      _selectedItems.add(_menuItems[index]);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
         child: DataTable(
           columns: [
             const DataColumn(label: Text('Item')),
@@ -106,11 +113,7 @@ class _NightCanteenState extends State<NightCanteen> {
                 DataCell(Text(_menuItems[index]['price'])),
                 DataCell(
                   IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _selectedItems.add(_menuItems[index]);
-                      });
-                    },
+                    onPressed: () => addToCart(index),
                     icon: Icon(Icons.add_shopping_cart),
                   ),
                 ),
@@ -154,4 +157,3 @@ class SortButton extends StatelessWidget {
     );
   }
 }
-
