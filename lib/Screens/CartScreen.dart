@@ -25,7 +25,12 @@ class CartScreen extends StatelessWidget {
                   final item = selectedItems[index];
                   return ListTile(
                     title: Text(item['item']),
-                    subtitle: Text(item['price']),
+                    subtitle: Text(
+                      item['price'],
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   );
                 },
               ),
@@ -48,7 +53,10 @@ class CartScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Total Items in Cart:',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Container(
@@ -56,7 +64,10 @@ class CartScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     itemCount.toString(),
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Container(
@@ -64,7 +75,10 @@ class CartScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Total Amount:',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Container(
@@ -72,7 +86,28 @@ class CartScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Rs. ${totalAmount.toStringAsFixed(2)}',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 24),
+                ElevatedButton(
+                  onPressed: () {
+                    // Implement the cart confirmation logic here
+                  },
+                  child: Text(
+                    'Confirm Cart',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    primary: Colors.blue,
                   ),
                 ),
               ],

@@ -10,7 +10,6 @@ import 'CartScreen.dart';
 
 class Block12 extends StatelessWidget {
   const Block12({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
