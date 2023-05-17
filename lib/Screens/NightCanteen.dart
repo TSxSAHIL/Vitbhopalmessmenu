@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 
 import 'CartScreen.dart';
@@ -80,7 +82,12 @@ class _NightCanteenState extends State<NightCanteen> {
 
   void addToCart(int index) {
     setState(() {
-      _selectedItems.add(_menuItems[index]);
+      final item = _menuItems[index];
+      if (_selectedItems.contains(item)) {
+        _selectedItems.remove(item);
+      } else {
+        _selectedItems.add(item);
+      }
     });
   }
 
@@ -88,43 +95,48 @@ class _NightCanteenState extends State<NightCanteen> {
 Widget build(BuildContext context) {
   return Scaffold(
     body: SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: DataTable(
-        columns: [
-          const DataColumn(label: Text('Item')),
-          DataColumn(
-            label: Row(
-              children: [
-                Text('Price'),
-                SortButton(
-                  sortAscending: _sortAscending,
-                  onPressed: sortItems,
-                ),
-              ],
+      scrollDirection: Axis.vertical,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(
+          columnSpacing: 10.0,
+          dataRowHeight: 60.0,
+          columns: [
+            const DataColumn(label: Text('Item')),
+            DataColumn(
+              label: Row(
+                children: [
+                  Text('Price'),
+                  SortButton(
+                    sortAscending: _sortAscending,
+                    onPressed: sortItems,
+                  ),
+                ],
+              ),
             ),
-          ),
-          DataColumn(label: Text('Add to Cart')),
-        ],
-        rows: List<DataRow>.generate(
-          _menuItems.length,
-          (index) {
-            final item = _menuItems[index];
-            final isSelected = _selectedItems.contains(item);
-            return DataRow(
-              cells: [
-                DataCell(Text(item['item'])),
-                DataCell(Text(item['price'])),
-                DataCell(
-                  IconButton(
-                    onPressed: () => addToCart(index),
-                    icon: Icon(
-                      isSelected ? Icons.check_circle : Icons.add_shopping_cart,
+            DataColumn(label: Text('Add to Cart')),
+          ],
+          rows: List<DataRow>.generate(
+            _menuItems.length,
+            (index) {
+              final item = _menuItems[index];
+              final isSelected = _selectedItems.contains(item);
+              return DataRow(
+                cells: [
+                  DataCell(Text(item['item'])),
+                  DataCell(Text(item['price'])),
+                  DataCell(
+                    IconButton(
+                      onPressed: () => addToCart(index),
+                      icon: Icon(
+                        isSelected ? Icons.check_circle : Icons.add_shopping_cart,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            );
-          },
+                ],
+              );
+            },
+          ),
         ),
       ),
     ),
