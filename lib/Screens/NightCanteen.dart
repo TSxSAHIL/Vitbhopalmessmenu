@@ -85,56 +85,63 @@ class _NightCanteenState extends State<NightCanteen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          columns: [
-            const DataColumn(label: Text('Item')),
-            DataColumn(
-              label: Row(
-                children: [
-                  Text('Price'),
-                  SortButton(
-                    sortAscending: _sortAscending,
-                    onPressed: sortItems,
-                  ),
-                ],
-              ),
-            ),
-            DataColumn(label: Text('Add to Cart')),
-          ],
-          rows: List<DataRow>.generate(
-            _menuItems.length,
-            (index) => DataRow(
-              cells: [
-                DataCell(Text(_menuItems[index]['item'])),
-                DataCell(Text(_menuItems[index]['price'])),
-                DataCell(
-                  IconButton(
-                    onPressed: () => addToCart(index),
-                    icon: Icon(Icons.add_shopping_cart),
-                  ),
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: DataTable(
+        columns: [
+          const DataColumn(label: Text('Item')),
+          DataColumn(
+            label: Row(
+              children: [
+                Text('Price'),
+                SortButton(
+                  sortAscending: _sortAscending,
+                  onPressed: sortItems,
                 ),
               ],
             ),
           ),
+          DataColumn(label: Text('Add to Cart')),
+        ],
+        rows: List<DataRow>.generate(
+          _menuItems.length,
+          (index) {
+            final item = _menuItems[index];
+            final isSelected = _selectedItems.contains(item);
+            return DataRow(
+              cells: [
+                DataCell(Text(item['item'])),
+                DataCell(Text(item['price'])),
+                DataCell(
+                  IconButton(
+                    onPressed: () => addToCart(index),
+                    icon: Icon(
+                      isSelected ? Icons.check_circle : Icons.add_shopping_cart,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CartScreen(selectedItems: _selectedItems),
-            ),
-          );
-        },
-        child: Icon(Icons.shopping_cart),
-      ),
-    );
-  }
+    ),
+    floatingActionButton: FloatingActionButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CartScreen(selectedItems: _selectedItems),
+          ),
+        );
+      },
+      child: Icon(Icons.shopping_cart),
+    ),
+  );
+}
+
 }
 
 class SortButton extends StatelessWidget {
