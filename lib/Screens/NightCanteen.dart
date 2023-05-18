@@ -1,13 +1,16 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: sort_child_properties_last, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+
 import 'CartScreen.dart';
+
 class NightCanteen extends StatefulWidget {
   NightCanteen({Key? key}) : super(key: key);
 
   @override
   _NightCanteenState createState() => _NightCanteenState();
 }
+
 class _NightCanteenState extends State<NightCanteen> {
   final List<Map<String, dynamic>> _menuItems = [
     {'item': 'Bread Omelette', 'price': 'Rs. 45'},
@@ -50,7 +53,7 @@ class _NightCanteenState extends State<NightCanteen> {
     {'item': 'Egg Dosa', 'price': 'Rs. 60'},
   ];
 
-  List<Map<String, dynamic>> _selectedItems = [];
+  final List<Map<String, dynamic>> _selectedItems = [];
 
   bool _sortAscending = true;
 
@@ -89,68 +92,70 @@ class _NightCanteenState extends State<NightCanteen> {
   }
 
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    body: SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          columnSpacing: 10.0,
-          dataRowHeight: 60.0,
-          columns: [
-            const DataColumn(label: Text('Item')),
-            DataColumn(
-              label: Row(
-                children: [
-                  Text('Price'),
-                  SortButton(
-                    sortAscending: _sortAscending,
-                    onPressed: sortItems,
-                  ),
-                ],
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: DataTable(
+            columnSpacing: 10.0,
+            dataRowHeight: 60.0,
+            columns: [
+              const DataColumn(label: Text('Item')),
+              DataColumn(
+                label: Row(
+                  children: [
+                    Text('Price'),
+                    SortButton(
+                      sortAscending: _sortAscending,
+                      onPressed: sortItems,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            DataColumn(label: Text('Add to Cart')),
-          ],
-          rows: List<DataRow>.generate(
-            _menuItems.length,
-            (index) {
-              final item = _menuItems[index];
-              final isSelected = _selectedItems.contains(item);
-              return DataRow(
-                cells: [
-                  DataCell(Text(item['item'])),
-                  DataCell(Text(item['price'])),
-                  DataCell(
-                    IconButton(
-                      onPressed: () => addToCart(index),
-                      icon: Icon(
-                        isSelected ? Icons.check_circle : Icons.add_shopping_cart,
+              DataColumn(label: Text('Add to Cart')),
+            ],
+            rows: List<DataRow>.generate(
+              _menuItems.length,
+              (index) {
+                final item = _menuItems[index];
+                final isSelected = _selectedItems.contains(item);
+                return DataRow(
+                  cells: [
+                    DataCell(Text(item['item'])),
+                    DataCell(Text(item['price'])),
+                    DataCell(
+                      IconButton(
+                        onPressed: () => addToCart(index),
+                        icon: Icon(
+                          isSelected
+                              ? Icons.check_circle
+                              : Icons.add_shopping_cart,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              );
-            },
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),
-    ),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => CartScreen(selectedItems: _selectedItems),
-          ),
-        );
-      },
-      child: Icon(Icons.shopping_cart),
-    ),
-  );
-}
-
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CartScreen(selectedItems: _selectedItems),
+            ),
+          );
+        },
+        child: const Icon(Icons.shopping_cart),
+        backgroundColor: const Color(0xFF1D267D),
+      ),
+    );
+  }
 }
 
 class SortButton extends StatelessWidget {
@@ -166,10 +171,10 @@ class SortButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: onPressed,
       icon: Icon(
         sortAscending ? Icons.arrow_drop_up : Icons.arrow_drop_down,
       ),
+      onPressed: onPressed,
     );
   }
 }
