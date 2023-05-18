@@ -82,11 +82,11 @@ void decreaseItemCount(int index) {
   setState(() {
     final item = _cartItems[index];
     if (item['quantity'] != null) {
-      int quantity = int.parse(item['quantity'].toString());
+      int quantity = item['quantity'];
       if (quantity == 1) {
-        _cartItems.remove(item);
-      } else if (quantity > 1) {
-        item['quantity'] = (quantity - 1).toString();
+        _cartItems.removeAt(index);
+      } else {
+        item['quantity'] = quantity - 1;
       }
     }
   });

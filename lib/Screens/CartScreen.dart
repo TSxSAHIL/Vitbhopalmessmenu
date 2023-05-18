@@ -41,30 +41,25 @@ class _CartScreenState extends State<CartScreen> {
     });
   }
 
-void decreaseItemCount(int index) {
-  setState(() {
-    final item = _cartItems[index];
-    if (item['quantity'] != null) {
-      int quantity = item['quantity'];
-      if (quantity == 1) {
-        _cartItems.removeAt(index);
-      } else {
-        item['quantity'] = quantity - 1;
-      }
-    }
-  });
-}
-
-
-
-
-  void confirmCart() {
+  void decreaseItemCount(int index) {
     setState(() {
-      _isCartConfirmed = true;
+      final item = _cartItems[index];
+      if (item['quantity'] != null) {
+        int quantity = item['quantity'];
+        if (quantity == 1) {
+          _cartItems.removeAt(index);
+        } else {
+          item['quantity'] = quantity - 1;
+        }
+      }
     });
+  }
+
+  void confirmCart() async {
+    _isCartConfirmed = true;
 
     // Show dialog box
-    showDialog(
+    await showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -84,6 +79,9 @@ void decreaseItemCount(int index) {
             TextButton(
               onPressed: () {
                 Navigator.pop(context); // Close the dialog
+                setState(() {
+                  _isCartConfirmed = false; // Reset the flag
+                });
               },
               child: Text(
                 'Cancel',
@@ -91,15 +89,18 @@ void decreaseItemCount(int index) {
               ),
             ),
             TextButton(
-              onPressed: () {
+              onPressed: () async {
                 Navigator.pop(context); // Close the dialog
                 // Navigate to the payment page
-                Navigator.push(
+                await Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => PaymentPage(),
                   ),
                 );
+                setState(() {
+                  _isCartConfirmed = false; // Reset the flag
+                });
               },
               child: Text(
                 'Proceed to Pay',
@@ -110,6 +111,11 @@ void decreaseItemCount(int index) {
         );
       },
     );
+
+    // Reset the flag if the dialog is dismissed
+    setState(() {
+      _isCartConfirmed = false;
+    });
   }
 
   @override
@@ -166,46 +172,46 @@ void decreaseItemCount(int index) {
             ),
             SizedBox(height: 8),
             Container(
-            padding: EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              color: Color(0xff1D267D),
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+              padding: EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                color: Color(0xff1D267D),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-                if (!_isCartConfirmed && getTotalAmount() > 0) // Add this condition
-                  GestureDetector(
-                    onTap: confirmCart,
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 8.0,
-                        horizontal: 16.0,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      child: Text(
-                        'Confirm',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xff1D267D),
+                  if (!_isCartConfirmed && getTotalAmount() > 0)
+                    // Add this condition
+                    GestureDetector(
+                      onTap: confirmCart,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8.0,
+                          horizontal: 16.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Text(
+                          'Confirm',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff1D267D),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             ),
-          ),
-
           ],
         ),
       ),
