@@ -1,4 +1,4 @@
-// ignore_for_file: sort_child_properties_last, library_private_types_in_public_api
+// ignore_for_file: sort_child_properties_last, library_private_types_in_public_api, deprecated_member_use
 
 import 'package:flutter/material.dart';
 
@@ -90,7 +90,6 @@ class _NightCanteenState extends State<NightCanteen> {
       }
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
