@@ -45,15 +45,17 @@ void decreaseItemCount(int index) {
   setState(() {
     final item = _cartItems[index];
     if (item['quantity'] != null) {
-      int quantity = int.parse(item['quantity'].toString());
+      int quantity = item['quantity'];
       if (quantity == 1) {
-        _cartItems.remove(item);
-      } else if (quantity > 1) {
-        item['quantity'] = (quantity - 1).toString();
+        _cartItems.removeAt(index);
+      } else {
+        item['quantity'] = quantity - 1;
       }
     }
   });
 }
+
+
 
 
   void confirmCart() {
@@ -83,7 +85,10 @@ void decreaseItemCount(int index) {
               onPressed: () {
                 Navigator.pop(context); // Close the dialog
               },
-              child: Text('Cancel',style: TextStyle(color: Color(0xff1D267D))),
+              child: Text(
+                'Cancel',
+                style: TextStyle(color: Color(0xff1D267D)),
+              ),
             ),
             TextButton(
               onPressed: () {
@@ -96,7 +101,10 @@ void decreaseItemCount(int index) {
                   ),
                 );
               },
-              child: Text('Proceed to Pay', style: TextStyle(color: Color(0xff1D267D)),),
+              child: Text(
+                'Proceed to Pay',
+                style: TextStyle(color: Color(0xff1D267D)),
+              ),
             ),
           ],
         );
@@ -158,51 +166,53 @@ void decreaseItemCount(int index) {
             ),
             SizedBox(height: 8),
             Container(
-              padding: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: Color(0xff1D267D),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+            padding: EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              color: Color(0xff1D267D),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                  if (!_isCartConfirmed)
-                    GestureDetector(
-                      onTap: confirmCart,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 8.0,
-                          horizontal: 16.0,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Text(
-                          'Confirm',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff1D267D),
-                          ),
+                ),
+                if (!_isCartConfirmed && getTotalAmount() > 0) // Add this condition
+                  GestureDetector(
+                    onTap: confirmCart,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 8.0,
+                        horizontal: 16.0,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Text(
+                        'Confirm',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xff1D267D),
                         ),
                       ),
                     ),
-                ],
-              ),
+                  ),
+              ],
             ),
+          ),
+
           ],
         ),
       ),
     );
   }
 }
+
 class PaymentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
