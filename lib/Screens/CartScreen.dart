@@ -56,35 +56,43 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
+        backgroundColor: Color(0xff1D267D),
       ),
-      body: ListView.builder(
-        itemCount: _cartItems.length,
-        itemBuilder: (context, index) {
-          final item = _cartItems[index];
-          final itemName = item['item'];
-          final itemPrice = item['price'];
-          final itemQuantity = item['quantity'] ?? 1;
+      body: _cartItems.isEmpty
+          ? Center(
+              child: Text(
+                'Cart is empty',
+                style: TextStyle(fontSize: 18),
+              ),
+            )
+          : ListView.builder(
+              itemCount: _cartItems.length,
+              itemBuilder: (context, index) {
+                final item = _cartItems[index];
+                final itemName = item['item'];
+                final itemPrice = item['price'];
+                final itemQuantity = item['quantity'] ?? 1;
 
-          return ListTile(
-            title: Text(itemName),
-            subtitle: Text('Price: $itemPrice'),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  onPressed: () => decreaseItemCount(index),
-                  icon: Icon(Icons.remove),
-                ),
-                Text('$itemQuantity'),
-                IconButton(
-                  onPressed: () => increaseItemCount(index),
-                  icon: Icon(Icons.add),
-                ),
-              ],
+                return ListTile(
+                  title: Text(itemName),
+                  subtitle: Text('Price: $itemPrice'),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        onPressed: () => decreaseItemCount(index),
+                        icon: Icon(Icons.remove),
+                      ),
+                      Text('$itemQuantity'),
+                      IconButton(
+                        onPressed: () => increaseItemCount(index),
+                        icon: Icon(Icons.add),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -99,7 +107,7 @@ class _CartScreenState extends State<CartScreen> {
             Container(
               padding: EdgeInsets.all(8.0),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color(0xff1D267D),
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Text(
