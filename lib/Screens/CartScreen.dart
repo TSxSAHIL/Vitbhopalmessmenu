@@ -1,26 +1,19 @@
 import 'package:flutter/material.dart';
-//Cart Screen
+
 class CartScreen extends StatefulWidget {
   final List<Map<String, dynamic>> selectedItems;
   const CartScreen({Key? key, required this.selectedItems}) : super(key: key);
+
   @override
   _CartScreenState createState() => _CartScreenState();
 }
+
 class _CartScreenState extends State<CartScreen> {
-  List<Map<String, dynamic>> cartItems = [];
-
   double totalAmount = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    cartItems = List<Map<String, dynamic>>.from(widget.selectedItems);
-    calculateTotalAmount();
-  }
 
   void calculateTotalAmount() {
     totalAmount = 0;
-    for (final item in cartItems) {
+    for (final item in widget.selectedItems) {
       final double itemPrice = double.parse(item['price'].substring(4));
       final int quantity = item['quantity'] ?? 1;
       totalAmount += itemPrice * quantity;
@@ -29,25 +22,41 @@ class _CartScreenState extends State<CartScreen> {
 
   void increaseQuantity(int index) {
     setState(() {
-      final item = cartItems[index];
+      final item = widget.selectedItems[index];
       if (item['quantity'] != null) {
-        cartItems[index]['quantity'] +=1;// item['quantity'] + 1;
+        widget.selectedItems[index]['quantity'] = item['quantity'] + 1;
         final double itemPrice = double.parse(item['price'].substring(4));
         totalAmount += itemPrice; // Increment the total amount
       }
     });
+    calculateTotalAmount();
   }
+
+  void decreaseQuantity(int index) {
+    setState(() {
+      final item = widget.selectedItems[index];
+      if (item['quantity'] != null && item['quantity'] > 1) {
+        widget.selectedItems[index]['quantity'] = item['quantity'] - 1;
+        final double itemPrice = double.parse(item['price'].substring(4));
+        totalAmount -= itemPrice; // Decrement the total amount
+      }
+    });
+    calculateTotalAmount();
+  }
+
   @override
   Widget build(BuildContext context) {
+    calculateTotalAmount(); // Calculate total amount when the state changes
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
         backgroundColor: Color(0xff1D267D),
       ),
       body: ListView.builder(
-        itemCount: cartItems.length,
+        itemCount: widget.selectedItems.length,
         itemBuilder: (context, index) {
-          final item = cartItems[index];
+          final item = widget.selectedItems[index];
           return ListTile(
             title: Text(item['item']),
             subtitle: Text(item['price']),
@@ -57,14 +66,7 @@ class _CartScreenState extends State<CartScreen> {
                 IconButton(
                   icon: Icon(Icons.remove),
                   onPressed: () {
-                    setState(() {
-                      final item = cartItems[index];
-                      if (item['quantity'] != null && item['quantity'] > 1) {
-                        cartItems[index]['quantity'] = item['quantity'] - 1;
-                        final double itemPrice = double.parse(item['price'].substring(4));
-                        totalAmount -= itemPrice; // Decrement the total amount
-                      }
-                    });
+                    decreaseQuantity(index);
                   },
                 ),
                 Text(item['quantity']?.toString() ?? '1'),
