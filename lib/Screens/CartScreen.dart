@@ -45,12 +45,11 @@ class _CartScreenState extends State<CartScreen> {
       final item = _cartItems[index];
       if (item['quantity'] == 1) {
         _cartItems.removeAt(index);
-      } else {
-        item['quantity'] = (item['quantity'] ?? 1) - 1;
+      } else if (item['quantity'] != null && item['quantity']! > 1) {
+        item['quantity'] = item['quantity']! - 1;
       }
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
