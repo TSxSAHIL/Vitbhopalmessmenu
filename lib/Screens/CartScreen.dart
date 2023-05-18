@@ -10,6 +10,7 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   List<Map<String, dynamic>> _cartItems = [];
+  bool _isCartConfirmed = false; // Add the isCartConfirmed variable
 
   @override
   void initState() {
@@ -40,16 +41,69 @@ class _CartScreenState extends State<CartScreen> {
     });
   }
 
-  void decreaseItemCount(int index) {
-    setState(() {
-      final item = _cartItems[index];
-      if (item['quantity'] == 1) {
-        _cartItems.removeAt(index);
-      } else if (item['quantity'] != null && item['quantity']! > 1) {
-        item['quantity'] = item['quantity']! - 1;
+void decreaseItemCount(int index) {
+  setState(() {
+    final item = _cartItems[index];
+    if (item['quantity'] != null) {
+      int quantity = int.parse(item['quantity'].toString());
+      if (quantity == 1) {
+        _cartItems.remove(item);
+      } else if (quantity > 1) {
+        item['quantity'] = (quantity - 1).toString();
       }
+    }
+  });
+}
+
+
+  void confirmCart() {
+    setState(() {
+      _isCartConfirmed = true;
     });
+
+    // Show dialog box
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirmation'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Total Items: ${getTotalItemCount()}'),
+              SizedBox(height: 8),
+              Text(
+                'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+              },
+              child: Text('Cancel',style: TextStyle(color: Color(0xff1D267D))),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+                // Navigate to the payment page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PaymentPage(),
+                  ),
+                );
+              },
+              child: Text('Proceed to Pay', style: TextStyle(color: Color(0xff1D267D)),),
+            ),
+          ],
+        );
+      },
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,15 +163,58 @@ class _CartScreenState extends State<CartScreen> {
                 color: Color(0xff1D267D),
                 borderRadius: BorderRadius.circular(8.0),
               ),
-              child: Text(
-                'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  if (!_isCartConfirmed)
+                    GestureDetector(
+                      onTap: confirmCart,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 8.0,
+                          horizontal: 16.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Text(
+                          'Confirm',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff1D267D),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+class PaymentPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Payment Page'),
+        backgroundColor: Color(0xff1D267D),
+      ),
+      body: Center(
+        child: Text(
+          'Payment Page',
+          style: TextStyle(fontSize: 18),
         ),
       ),
     );
