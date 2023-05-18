@@ -1,4 +1,5 @@
 // ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:messmenu/Screens/AboutPage.dart';
 import 'package:messmenu/Screens/Block1&2.dart';
@@ -7,14 +8,13 @@ import 'Screens/BoysMenuScreen.dart';
 import 'Screens/GirlsMenuScreen.dart';
 
 void main() => runApp(MyApp());
+
 class MyApp extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Menu App',
-
       theme: ThemeData(
         brightness: Brightness.light,
         primarySwatch: Colors.blue,
@@ -28,8 +28,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// Home Screen
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -116,7 +114,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(19.0),
                     child: Container(
-                      
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: [
@@ -131,16 +128,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: AssetImage('assets/boys_hostel.jpg'),
                           fit: BoxFit.cover,
                         ),
-                        gradient: isBoysContainerHovered
-                            ? const LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.blueAccent,
-                                  Colors.lightBlueAccent,
-                                ],
-                              )
-                            : null,
                       ),
                     ),
                   ),
@@ -184,16 +171,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: AssetImage('assets/girls_hostel.jpg'),
                           fit: BoxFit.cover,
                         ),
-                        gradient: isGirlsContainerHovered
-                            ? const LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  Colors.pinkAccent,
-                                  Colors.purpleAccent,
-                                ],
-                              )
-                            : null,
                       ),
                     ),
                   ),
