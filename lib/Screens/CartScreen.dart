@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Payments/PaymentPage.dart';
+
 class CartScreen extends StatefulWidget {
   final List<Map<String, dynamic>> selectedItems;
   const CartScreen({Key? key, required this.selectedItems}) : super(key: key);
@@ -219,20 +221,3 @@ class _CartScreenState extends State<CartScreen> {
   }
 }
 
-class PaymentPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Payment Page'),
-        backgroundColor: Color(0xff1D267D),
-      ),
-      body: Center(
-        child: Text(
-          'Payment Page',
-          style: TextStyle(fontSize: 18),
-        ),
-      ),
-    );
-  }
-}
