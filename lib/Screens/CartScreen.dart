@@ -9,72 +9,76 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  double totalAmount = 0;
+  List<Map<String, dynamic>> _cartItems = [];
 
-  void calculateTotalAmount() {
-    totalAmount = 0;
-    for (final item in widget.selectedItems) {
-      final double itemPrice = double.parse(item['price'].substring(4));
-      final int quantity = item['quantity'] ?? 1;
-      totalAmount += itemPrice * quantity;
+  @override
+  void initState() {
+    super.initState();
+    _cartItems = List.from(widget.selectedItems);
+  }
+
+  int getTotalItemCount() {
+    return _cartItems.length;
+  }
+
+  double getTotalAmount() {
+    double total = 0;
+    for (var item in _cartItems) {
+      double? itemPrice = double.tryParse(item['price'].substring(4));
+      int itemQuantity = item['quantity'] ?? 1;
+      if (itemPrice != null) {
+        total += itemPrice * itemQuantity;
+      }
     }
+    return total;
   }
 
-  void increaseQuantity(int index) {
+  void increaseItemCount(int index) {
     setState(() {
-      final item = widget.selectedItems[index];
-      if (item['quantity'] != null) {
-        widget.selectedItems[index]['quantity'] = item['quantity'] + 1;
-        final double itemPrice = double.parse(item['price'].substring(4));
-        totalAmount += itemPrice; // Increment the total amount
-      }
+      final item = _cartItems[index];
+      item['quantity'] = (item['quantity'] ?? 1) + 1;
     });
-    calculateTotalAmount();
   }
 
-  void decreaseQuantity(int index) {
+  void decreaseItemCount(int index) {
     setState(() {
-      final item = widget.selectedItems[index];
-      if (item['quantity'] != null && item['quantity'] > 1) {
-        widget.selectedItems[index]['quantity'] = item['quantity'] - 1;
-        final double itemPrice = double.parse(item['price'].substring(4));
-        totalAmount -= itemPrice; // Decrement the total amount
+      final item = _cartItems[index];
+      if (item['quantity'] == 1) {
+        _cartItems.removeAt(index);
+      } else {
+        item['quantity'] = (item['quantity'] ?? 1) - 1;
       }
     });
-    calculateTotalAmount();
   }
 
   @override
   Widget build(BuildContext context) {
-    calculateTotalAmount(); // Calculate total amount when the state changes
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
-        backgroundColor: Color(0xff1D267D),
       ),
       body: ListView.builder(
-        itemCount: widget.selectedItems.length,
+        itemCount: _cartItems.length,
         itemBuilder: (context, index) {
-          final item = widget.selectedItems[index];
+          final item = _cartItems[index];
+          final itemName = item['item'];
+          final itemPrice = item['price'];
+          final itemQuantity = item['quantity'] ?? 1;
+
           return ListTile(
-            title: Text(item['item']),
-            subtitle: Text(item['price']),
+            title: Text(itemName),
+            subtitle: Text('Price: $itemPrice'),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
+                  onPressed: () => decreaseItemCount(index),
                   icon: Icon(Icons.remove),
-                  onPressed: () {
-                    decreaseQuantity(index);
-                  },
                 ),
-                Text(item['quantity']?.toString() ?? '1'),
+                Text('$itemQuantity'),
                 IconButton(
+                  onPressed: () => increaseItemCount(index),
                   icon: Icon(Icons.add),
-                  onPressed: () {
-                    increaseQuantity(index);
-                  },
                 ),
               ],
             ),
@@ -82,10 +86,31 @@ class _CartScreenState extends State<CartScreen> {
         },
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          'Total Amount: Rs. ${totalAmount.toStringAsFixed(2)}',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Total Items: ${getTotalItemCount()}',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Container(
+              padding: EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
