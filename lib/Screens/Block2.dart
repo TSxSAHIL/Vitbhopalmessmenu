@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class Block2 extends StatelessWidget {
+class Block2 extends StatefulWidget {
+  @override
+  _Block2State createState() => _Block2State();
+}
+
+class _Block2State extends State<Block2> {
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2022),
+      lastDate: DateTime(2025),
+    );
+
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
   final Map<String, List<String>> menu = {
+    // menu data...
     'Monday': [
       'Breakfast: Idly , Sambhar , Midhu Vada , Boiled Egg , Sprouts',
       'Lunch: Rajma Chawal , Jeera Aloo Fry, Rice , Roti',
@@ -46,27 +70,15 @@ class Block2 extends StatelessWidget {
     ]
   };
 
-  final List<String> dayNames = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
-  ];
-
-  String getCurrentDayName() {
-    return dayNames[DateTime.now().weekday - 1];
-  }
-
-  List<String> getCurrentMenu() {
-    String currentDayName = getCurrentDayName();
-    return menu[currentDayName]!;
+  List<String> getMenuForDate(DateTime date) {
+    final String dayName = DateFormat('EEEE').format(date);
+    return menu[dayName] ?? [];
   }
 
   @override
   Widget build(BuildContext context) {
+    final List<String> currentMenu = getMenuForDate(selectedDate);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -74,38 +86,31 @@ class Block2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10.0),
-            Text(
-              'Menu for Today (${getCurrentDayName()})',
-              style: const TextStyle(
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              children: [
+                Text(
+                  'Menu for Date: ${DateFormat('dd/MM/yyyy').format(selectedDate)}',
+                  style: const TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () => _selectDate(context),
+                  icon: Icon(Icons.calendar_today),
+                ),
+              ],
             ),
             const SizedBox(height: 26.0),
             Expanded(
               child: ListView.builder(
-                itemCount: 4,
+                itemCount: currentMenu.length,
                 itemBuilder: (BuildContext context, int index) {
-                  String mealType = '';
-                  String mealName = '';
-                  switch (index) {
-                    case 0:
-                      mealType = 'Breakfast';
-                      mealName = getCurrentMenu()[0].substring(11);
-                      break;
-                    case 1:
-                      mealType = 'Lunch';
-                      mealName = getCurrentMenu()[1].substring(7);
-                      break;
-                    case 2:
-                      mealType = 'Snacks';
-                      mealName = getCurrentMenu()[2].substring(8);
-                      break;
-                    case 3:
-                      mealType = 'Dinner';
-                      mealName = getCurrentMenu()[3].substring(8);
-                      break;
-                  }
+                  final String menuItem = currentMenu[index];
+                  final List<String> parts = menuItem.split(':');
+                  final String mealType = parts[0].trim();
+                  final String mealName = parts[1].trim();
+
                   return ExpansionTile(
                     title: Text(
                       mealType,

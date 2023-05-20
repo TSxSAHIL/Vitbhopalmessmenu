@@ -92,3 +92,135 @@ void decreaseItemCount(int index) {
     }
   });
 }
+
+//BLOCK1
+'Monday': [
+      'Breakfast: Idly , Sambhar , Midhu Vada',
+      'Lunch: Rajma Chawal , Jeera Aloo Fry , Rice , Roti',
+      'Snacks: Vada Pav & Tea',
+      'Dinner: Egg Bhurji Masala , Dum Aloo , Rice , Roti'
+    ],
+    'Tuesday': [
+      'Breakfast: Veg Parantha ,  MixVeg & Tea ',
+      'Lunch: Chole Masala , Poori , Rice , Curd , Roti',
+      'Snacks: BhelPuri & Tea',
+      'Dinner: Soya Chunks , Halwa , Masala Dal , Rice , Roti'
+    ],
+    'Wednesday': [
+      'Breakfast: Uthappam & Tea',
+      'Lunch: Veg Hariyali , Palak Sabji & Curd Rice',
+      'Snacks: Pani Poori',
+      'Dinner: Butter Paneer , Capsicum Chicken , Rice , Roti'
+    ],
+    'Thursday': [
+      'Breakfast: Poha , Jalebi',
+      'Lunch: Navratan Korma , Veg Pulao, ButterMilk ',
+      'Snacks: SweetCorn Salad & Tea',
+      'Dinner: Green Peas Masala , Egg Curry , Rice , Roti'
+    ],
+    'Friday': [
+      'Breakfast: Chole Bhature',
+      'Lunch: Veg Biryani , Raita , Masala Dal , Roti',
+      'Snacks: Cake/Patties & Tea',
+      'Dinner: Kadhai Paneer , Butter Chicken , Rice , Roti'
+    ],
+    'Saturday': [
+      'Breakfast: Pav Bhaji',
+      'Lunch: Chana Dal , Baigan Bharta ,Sambhar , Rice , Roti',
+      'Snacks: Samosa & Tea',
+      'Dinner: Gobi Manchurian , Fried Rice , Rice , Roti'
+    ],
+    'Sunday': [
+      'Breakfast: Masala Dosa',
+      'Lunch: Paneer & Chicken Biryani , Vegetable Raita',
+      'Snacks: Dhokla & Tea',
+      'Dinner: Dal Makhani ,Tinda Aloo , Gulab Jamun , Rice , Roti '
+    ]
+
+// BLOCK2
+'Monday': [
+      'Breakfast: Idly , Sambhar , Midhu Vada , Boiled Egg , Sprouts',
+      'Lunch: Rajma Chawal , Jeera Aloo Fry, Rice , Roti',
+      'Snacks: Vada Pav & Tea',
+      'Dinner: Egg Bhurji Masala , Dum Aloo , Rice , Roti'
+    ],
+    'Tuesday': [
+      'Breakfast: Pav Bhaji / Vermicilli Upma ',
+      'Lunch: Soya Chunks , Masala Dal , Rice , Roti',
+      'Snacks: BhelPuri & Tea',
+      'Dinner: Chole Masala , Poori, Halwa , Masala Dal , Rice , Roti'
+    ],
+    'Wednesday': [
+      'Breakfast: Uthappam & Tea',
+      'Lunch: Veg Hariyali , Palak Sabji & Curd Rice',
+      'Snacks: Pani Poori',
+      'Dinner: Butter Paneer , Capsicum Chicken , Rice , Roti'
+    ],
+    'Thursday': [
+      'Breakfast: Poha , Jalebi',
+      'Lunch: Navratan Korma , Veg Pulao, ButterMilk ',
+      'Snacks: SweetCorn Salad & Tea',
+      'Dinner: Green Peas Masala , Egg Curry , Rice , Roti'
+    ],
+    'Friday': [
+      'Breakfast: Chole Bhature',
+      'Lunch: Veg Biryani , Raita , Masala Dal , Roti',
+      'Snacks: Cake/Patties & Tea',
+      'Dinner: Kadhai Paneer , Butter Chicken , Rice , Roti'
+    ],
+    'Saturday': [
+      'Breakfast: Parantha ',
+      'Lunch: Chana Dal Khichdi , Baigan Bharta ,Sambhar , Rice , Roti',
+      'Snacks: Samosa & Tea',
+      'Dinner: Gobi Manchurian , Fried Rice , Rice , Roti'
+    ],
+    'Sunday': [
+      'Breakfast: Masala Dosa',
+      'Lunch: Paneer & Chicken Biryani , Vegetable Raita',
+      'Snacks: Dhokla & Tea',
+      'Dinner: Dal Makhani ,Tinda Aloo , Rice , Roti '
+    ]
+
+    //Girls
+    'Monday': [
+      'Breakfast: Idly , Sambhar , Midhu Vada',
+      'Lunch: Rajma Chawal , Rice , Roti , Buttermilk',
+      'Snacks: Aloo Chat & Tea',
+      'Dinner: Egg Bhurji Masala ,Rajasthani Bhindi , Rice , Roti'
+    ],
+    'Tuesday': [
+      'Breakfast: Poha , Uppuma , Jalebi , Banana',
+      'Lunch: Mix Veg , Plain Rice , Masoor Dal , Roti , Curd',
+      'Snacks: Pani Poori & Tea',
+      'Dinner: Roti , Jeera Rice , Choley , Plain Dal'
+    ],
+    'Wednesday': [
+      'Breakfast: Pav Bhaji',
+      'Lunch: Dal Tadka , Rice , Roti , Veg Koftha',
+      'Snacks: Kachori / Chenna & Tea',
+      'Dinner: Dal Tadka , Chicken 65 , Paneer Bhurji , Rice & Roti'
+    ],
+    'Thursday': [
+      'Breakfast: Pongal , Vad , Sambhar ,Banana',
+      'Lunch: Dum Aloo , Mix dal , Roti , Ghee Rice',
+      'Snacks: Chowmin & Tea',
+      'Dinner: Sweet Corn Soup , Aloo Gobhi , Egg Bhurji , Rice , Roti'
+    ],
+    'Friday': [
+      'Breakfast: Chole Bhature',
+      'Lunch: Peas Masala , Masala Dal , Rice , Roti',
+      'Snacks: Papadi Chat & Tea',
+      'Dinner: Chilly Paneer , Butter Chicken , Rice , Roti'
+    ],
+    'Saturday': [
+      'Breakfast: Masala Dosa',
+      'Lunch: Masoor Dal , Kaju Rice , Kadhai Chole , Curd',
+      'Snacks: Onion Pakoda & Tea ',
+      'Dinner: Veg Manchurian , Fried Rice , Rice , Roti'
+    ],
+    'Sunday': [
+      'Breakfast: Paneer Parantha ',
+      'Lunch: Paneer & Chicken Biryani , Boondi Raita',
+      'Snacks: Samosa',
+      'Dinner: Kadi Pakoda , Gulab Jamun , Roti , Rice '
+    ]

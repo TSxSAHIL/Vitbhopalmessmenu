@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 
 import 'Payments/PaymentPage.dart';
@@ -87,25 +89,6 @@ class _CartScreenState extends State<CartScreen> {
               },
               child: Text(
                 'Cancel',
-                style: TextStyle(color: Color(0xff1D267D)),
-              ),
-            ),
-            TextButton(
-              onPressed: () async {
-                Navigator.pop(context); // Close the dialog
-                // Navigate to the payment page
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PaymentPage(),
-                  ),
-                );
-                setState(() {
-                  _isCartConfirmed = false; // Reset the flag
-                });
-              },
-              child: const Text(
-                'Proceed to Pay',
                 style: TextStyle(color: Color(0xff1D267D)),
               ),
             ),
@@ -220,4 +203,3 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 }
-
