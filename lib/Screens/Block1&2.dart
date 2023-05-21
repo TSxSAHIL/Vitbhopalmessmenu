@@ -16,7 +16,6 @@ class Block12 extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Boys Hostel Menu"),
-        
           backgroundColor: const Color(0xff0C134F),
           bottom: const TabBar(
             tabs: [
