@@ -10,7 +10,6 @@ class NightCanteen extends StatefulWidget {
 
 class _NightCanteenState extends State<NightCanteen> {
   // Menu List of boys hostel
-  
   final List<Map<String, dynamic>> _menuItems = [
     // menu items...
     {'item': 'Bread Omelette', 'price': 'Rs. 45'},
