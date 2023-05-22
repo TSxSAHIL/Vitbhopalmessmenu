@@ -7,7 +7,6 @@ class NightCanteen extends StatefulWidget {
   @override
   _NightCanteenState createState() => _NightCanteenState();
 }
-
 class _NightCanteenState extends State<NightCanteen> {
   // Menu List of boys hostel
   final List<Map<String, dynamic>> _menuItems = [
