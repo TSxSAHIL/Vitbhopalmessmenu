@@ -48,7 +48,6 @@ class _NightCanteenState extends State<NightCanteen> {
     {'item': 'Onion Dosa', 'price': 'Rs. 55'},
     {'item': 'Ghee Dosa', 'price': 'Rs. 60'},
     {'item': 'Egg Dosa', 'price': 'Rs. 60'},
-    
   ];
 // Final Logics
 
