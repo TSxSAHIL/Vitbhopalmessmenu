@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
 class BoysMenuScreen extends StatefulWidget {
   @override
   _BoysMenuScreenState createState() => _BoysMenuScreenState();
@@ -79,6 +78,8 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
   @override
   Widget build(BuildContext context) {
     final List<String> currentMenu = getMenuForDate(selectedDate);
+    final Brightness brightness = Theme.of(context).brightness;
+    final bool isDarkTheme = brightness == Brightness.dark;
 
     return Scaffold(
       body: Padding(
@@ -91,14 +92,18 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
               children: [
                 Text(
                   'Menu for Date: ${DateFormat('dd/MM/yyyy').format(selectedDate)}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
+                    color: isDarkTheme ? Colors.white : Colors.black,
                   ),
                 ),
                 IconButton(
                   onPressed: () => _selectDate(context),
-                  icon: Icon(Icons.calendar_today),
+                  icon: Icon(
+                    Icons.calendar_today,
+                    color: isDarkTheme ? Colors.white : Colors.black,
+                  ),
                 ),
               ],
             ),
@@ -115,15 +120,19 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
                   return ExpansionTile(
                     title: Text(
                       mealType,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        color: isDarkTheme ? Colors.white : Colors.black,
                       ),
                     ),
                     children: [
                       ListTile(
                         title: Text(
                           mealName,
-                          style: const TextStyle(fontSize: 16.0),
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: isDarkTheme ? Colors.white : Colors.black,
+                          ),
                         ),
                       ),
                     ],

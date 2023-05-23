@@ -1,14 +1,17 @@
-// ignore_for_file: sort_child_properties_last, library_private_types_in_public_api, deprecated_member_use
 import 'package:flutter/material.dart';
 import 'CartScreen.dart';
+
 class NightCanteen extends StatefulWidget {
   NightCanteen({Key? key}) : super(key: key);
+
   @override
   _NightCanteenState createState() => _NightCanteenState();
 }
+
 class _NightCanteenState extends State<NightCanteen> {
-  //Menu List
+  // Menu List
   final List<Map<String, dynamic>> _menuItems = [
+    // menu items...
     {'item': 'Bread Omelette', 'price': 'Rs. 45'},
     {'item': 'Plain Omelette', 'price': 'Rs. 35'},
     {'item': 'Onion Omelette', 'price': 'Rs. 40'},
@@ -48,10 +51,12 @@ class _NightCanteenState extends State<NightCanteen> {
     {'item': 'Ghee Dosa', 'price': 'Rs. 60'},
     {'item': 'Egg Dosa', 'price': 'Rs. 60'},
   ];
-  //Sort Logic
+
+  // Sort Logic
   final List<Map<String, dynamic>> _selectedItems = [];
   bool _sortAscending = true;
-  //Logic for sort
+
+  // Logic for sort
   void sortItems() {
     setState(() {
       if (_sortAscending) {
@@ -85,8 +90,12 @@ class _NightCanteenState extends State<NightCanteen> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
+    final Brightness brightness = Theme.of(context).brightness;
+    final bool isDarkTheme = brightness == Brightness.dark;
+
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -104,6 +113,7 @@ class _NightCanteenState extends State<NightCanteen> {
                     SortButton(
                       sortAscending: _sortAscending,
                       onPressed: sortItems,
+                      isDarkTheme: isDarkTheme,
                     ),
                   ],
                 ),
@@ -117,8 +127,22 @@ class _NightCanteenState extends State<NightCanteen> {
                 final isSelected = _selectedItems.contains(item);
                 return DataRow(
                   cells: [
-                    DataCell(Text(item['item'])),
-                    DataCell(Text(item['price'])),
+                    DataCell(
+                      Text(
+                        item['item'],
+                        style: TextStyle(
+                          color: isDarkTheme ? Colors.white : Colors.black,
+                        ),
+                      ),
+                    ),
+                    DataCell(
+                      Text(
+                        item['price'],
+                        style: TextStyle(
+                          color: isDarkTheme ? Colors.white : Colors.black,
+                        ),
+                      ),
+                    ),
                     DataCell(
                       IconButton(
                         onPressed: () => addToCart(index),
@@ -126,6 +150,7 @@ class _NightCanteenState extends State<NightCanteen> {
                           isSelected
                               ? Icons.check_circle
                               : Icons.add_shopping_cart,
+                          color: isDarkTheme ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -141,7 +166,8 @@ class _NightCanteenState extends State<NightCanteen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CartScreen(selectedItems: _selectedItems),
+              builder: (context) =>
+                  CartScreen(selectedItems: _selectedItems),
             ),
           );
         },
@@ -151,22 +177,25 @@ class _NightCanteenState extends State<NightCanteen> {
     );
   }
 }
-//Sort Button Added
+
 class SortButton extends StatelessWidget {
   const SortButton({
     Key? key,
     required this.sortAscending,
     required this.onPressed,
+    required this.isDarkTheme,
   }) : super(key: key);
 
   final bool sortAscending;
   final VoidCallback onPressed;
+  final bool isDarkTheme;
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       icon: Icon(
         sortAscending ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+        color: isDarkTheme ? Colors.white : Colors.black,
       ),
       onPressed: onPressed,
     );

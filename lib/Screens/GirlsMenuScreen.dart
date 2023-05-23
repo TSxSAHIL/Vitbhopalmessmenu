@@ -78,11 +78,13 @@ class _GirlsMenuScreenState extends State<GirlsMenuScreen> {
   @override
   Widget build(BuildContext context) {
     final List<String> currentMenu = getMenuForDate(selectedDate);
+    final Brightness brightness = Theme.of(context).brightness;
+    final Color textColor = brightness == Brightness.dark ? Colors.white : Colors.black;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Girls Mess Menu'),
-        backgroundColor: const Color(0xff1D267D),
+        backgroundColor: const Color(0xff0C134F),
         centerTitle: false,
       ),
       body: Padding(
@@ -95,9 +97,10 @@ class _GirlsMenuScreenState extends State<GirlsMenuScreen> {
               children: [
                 Text(
                   'Menu for Date: ${DateFormat('dd/MM/yyyy').format(selectedDate)}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
+                    color: textColor,
                   ),
                 ),
                 IconButton(
@@ -119,15 +122,19 @@ class _GirlsMenuScreenState extends State<GirlsMenuScreen> {
                   return ExpansionTile(
                     title: Text(
                       mealType,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        color: textColor,
                       ),
                     ),
                     children: [
                       ListTile(
                         title: Text(
                           mealName,
-                          style: const TextStyle(fontSize: 16.0),
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: textColor,
+                          ),
                         ),
                       ),
                     ],

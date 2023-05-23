@@ -108,7 +108,7 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
-        backgroundColor: Color(0xff1D267D),
+        backgroundColor: Color((0xff0C134F)),
       ),
       body: _cartItems.isEmpty
           ? Center(
@@ -146,60 +146,61 @@ class _CartScreenState extends State<CartScreen> {
               },
             ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+  padding: const EdgeInsets.all(16.0),
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        'Total Items: ${getTotalItemCount()}',
+        style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff0C134F)),
+      ),
+      SizedBox(height: 8),
+      Container(
+        padding: EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Color(0xFF1D267D)
+              : Colors.white,
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Total Items: ${getTotalItemCount()}',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
-            Container(
-              padding: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: Color(0xff1D267D),
-                borderRadius: BorderRadius.circular(8.0),
+              'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xff0C134F)
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
-                    style: const TextStyle(
+            ),
+            if (!_isCartConfirmed && getTotalAmount() > 0)
+              GestureDetector(
+                onTap: confirmCart,
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 16.0,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0xff1D267D),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    'Confirm',
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
-                  if (!_isCartConfirmed && getTotalAmount() > 0)
-                    // Add this condition
-                    GestureDetector(
-                      onTap: confirmCart,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 8.0,
-                          horizontal: 16.0,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Text(
-                          'Confirm',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff1D267D),
-                          ),
-                        ),
-                      ),
-                    ),
-                ],
+                ),
               ),
-            ),
           ],
         ),
       ),
+    ],
+  ),
+),
     );
   }
 }

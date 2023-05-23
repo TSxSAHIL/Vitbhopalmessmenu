@@ -90,14 +90,18 @@ class _Block2State extends State<Block2> {
               children: [
                 Text(
                   'Menu for Date: ${DateFormat('dd/MM/yyyy').format(selectedDate)}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, // Use white color for dark theme, black for light theme
                   ),
                 ),
                 IconButton(
                   onPressed: () => _selectDate(context),
-                  icon: Icon(Icons.calendar_today),
+                  icon: Icon(
+                    Icons.calendar_today,
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, // Use white color for dark theme, black for light theme
+                  ),
                 ),
               ],
             ),
@@ -114,15 +118,19 @@ class _Block2State extends State<Block2> {
                   return ExpansionTile(
                     title: Text(
                       mealType,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, // Use white color for dark theme, black for light theme
                       ),
                     ),
                     children: [
                       ListTile(
                         title: Text(
                           mealName,
-                          style: const TextStyle(fontSize: 16.0),
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black, // Use white color for dark theme, black for light theme
+                          ),
                         ),
                       ),
                     ],

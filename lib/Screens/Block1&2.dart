@@ -17,7 +17,7 @@ class Block12 extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Boys Hostel Menu"),
         
-          backgroundColor: const Color(0xff1D267D),
+          backgroundColor: const Color(0xff0C134F),
           bottom: const TabBar(
             tabs: [
               Tab(text: 'Block 1'),
