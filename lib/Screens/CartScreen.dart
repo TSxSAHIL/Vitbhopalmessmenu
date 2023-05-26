@@ -102,7 +102,6 @@ class _CartScreenState extends State<CartScreen> {
       _isCartConfirmed = false;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
