@@ -97,7 +97,6 @@ class _CartScreenState extends State<CartScreen> {
       },
     );
     // Reset the flag if the dialog is dismissed
-    
     setState(() {
       _isCartConfirmed = false;
     });
