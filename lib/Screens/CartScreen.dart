@@ -73,7 +73,7 @@ class _CartScreenState extends State<CartScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Total Items: ${getTotalItemCount()}'),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 'Total Amount: Rs. ${getTotalAmount().toStringAsFixed(2)}',
               ),
