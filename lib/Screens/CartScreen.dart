@@ -87,7 +87,7 @@ class _CartScreenState extends State<CartScreen> {
                   _isCartConfirmed = false; // Reset the flag
                 });
               },
-              child: Text(
+              child: const Text(
                 'Cancel',
                 style: TextStyle(color: Color(0xff1D267D)),
               ),
