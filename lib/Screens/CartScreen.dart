@@ -61,7 +61,6 @@ class _CartScreenState extends State<CartScreen> {
 
   void confirmCart() async {
     _isCartConfirmed = true;
-
     // Show dialog box
     await showDialog(
       context: context,
