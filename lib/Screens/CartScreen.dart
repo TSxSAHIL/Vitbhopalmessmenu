@@ -107,7 +107,7 @@ class _CartScreenState extends State<CartScreen> {
         backgroundColor: Color((0xff0C134F)),
       ),
       body: _cartItems.isEmpty
-          ? Center(
+          ? const Center(
               child: Text(
                 'Cart is empty',
                 style: TextStyle(fontSize: 18),
