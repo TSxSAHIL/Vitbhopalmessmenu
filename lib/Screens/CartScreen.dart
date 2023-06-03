@@ -121,7 +121,6 @@ class _CartScreenState extends State<CartScreen> {
                 final itemPrice = item['price'];
                 final itemQuantity = item['quantity'] ?? 1;
                 //return Listtile
-                
                 return ListTile(
                   title: Text(itemName),
                   subtitle: Text('Price: $itemPrice'),
