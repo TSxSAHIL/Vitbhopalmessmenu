@@ -57,7 +57,7 @@ class _Block2State extends State<Block2> {
       'Dinner: Kadhai Paneer , Butter Chicken , Rice , Roti'
     ],
     'Saturday': [
-      'Breakfast: Parantha ',
+      'Breakfast: Chole Bhature , Fruit ',
       'Lunch: Chana Dal Khichdi , Baigan Bharta ,Sambhar , Rice , Roti',
       'Snacks: Samosa & Tea',
       'Dinner: Gobi Manchurian , Fried Rice , Rice , Roti'
