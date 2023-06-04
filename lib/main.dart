@@ -9,6 +9,7 @@ import 'package:messmenu/Screens/BoysMenuScreen.dart';
 import 'package:messmenu/Screens/GirlsMenuScreen.dart';
 
 void main() => runApp(MyApp());
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
