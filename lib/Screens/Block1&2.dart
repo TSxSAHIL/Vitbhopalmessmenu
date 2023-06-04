@@ -21,7 +21,7 @@ class Block12 extends StatelessWidget {
           bottom: const TabBar(
             tabs: [
               Tab(text: 'Block 1'),
-              Tab(text: 'Block 2'),
+              Tab(text: 'Block 2 & 3'),
               Tab(text: 'Night Canteen',)
             ],
           ),
