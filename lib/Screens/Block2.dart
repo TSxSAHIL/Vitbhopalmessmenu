@@ -33,7 +33,7 @@ class _Block2State extends State<Block2> {
       'Dinner: Egg Bhurji Masala , Dum Aloo , Rice , Roti'
     ],
     'Tuesday': [
-      'Breakfast: Pav Bhaji / Vermicilli Upma ',
+      'Breakfast: Parantha , Sabji , Fruit',
       'Lunch: Soya Chunks , Masala Dal , Rice , Roti',
       'Snacks: BhelPuri & Tea',
       'Dinner: Chole Masala , Poori, Halwa , Masala Dal , Rice , Roti'
