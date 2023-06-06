@@ -58,7 +58,7 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
     ],
     'Saturday': [
       'Breakfast: Chole Bhature , Banana , Milk & Tea',
-      'Lunch: Chana Dal , Baigan Bharta ,Sambhar , Rice , Roti',
+      'Lunch: Chana Dal , Khichdi , Baigan Bharta ,Sambhar , Rice , Roti',
       'Snacks: Samosa & Tea',
       'Dinner: Gobi Manchurian , Fried Rice , Rice , Roti'
     ],
