@@ -65,7 +65,7 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
     'Sunday': [
       'Breakfast: Masala Dosa , Milk & Tea',
       'Lunch: Paneer & Chicken Biryani , Vegetable Raita',
-      'Snacks: Dhokla & Tea',
+      'Snacks: Dhokla/Pasta & Tea',
       'Dinner: Dal Makhani ,Tinda Aloo , Gulab Jamun , Rice , Roti '
     ]
   };
