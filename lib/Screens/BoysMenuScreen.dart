@@ -54,7 +54,7 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
       'Breakfast: Dosa , Sambar , Green Chutney',
       'Lunch: Veg Biryani , Raita , Masala Dal , Roti',
       'Snacks: Cake/Patties & Tea',
-      'Dinner: Kadhai Paneer , Butter Chicken , Rice , Roti'
+      'Dinner: Kadhai Paneer , Butter Chicken , Dal Tadka , Rice , Roti'
     ],
     'Saturday': [
       'Breakfast: Pav Bhaji',
