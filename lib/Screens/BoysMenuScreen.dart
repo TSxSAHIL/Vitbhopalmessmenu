@@ -30,7 +30,7 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
       'Breakfast: Idly , Sambhar , Midhu Vada',
       'Lunch: Rajma Chawal , Jeera Aloo Fry , Rice , Roti',
       'Snacks: Vada Pav & Tea',
-      'Dinner: Egg Bhurji Masala , Dum Aloo , Rice , Roti'
+      'Dinner: Egg Bhurji Masala , Kashmiri Aloo , Rice , Roti'
     ],
     'Tuesday': [
       'Breakfast: Veg Parantha ,  MixVeg & Tea ',
