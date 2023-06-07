@@ -34,7 +34,7 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
     ],
     'Tuesday': [
       'Breakfast: Veg Parantha / Poori ,  MixVeg & Tea ',
-      'Lunch: Chole Masala , Poori , Rice , Curd , Roti',
+      'Lunch: Chole Masala , Poori , Sambar , Rice , Curd , Roti',
       'Snacks: BhelPuri & Tea',
       'Dinner: Soya Chunks , Halwa , Masala Dal , Rice , Roti'
     ],
