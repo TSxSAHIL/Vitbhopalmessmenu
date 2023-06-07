@@ -39,7 +39,7 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
       'Dinner: Soya Chunks , Kuska , Fruit Custard , Masala Dal , Rice , Roti'
     ],
     'Wednesday': [
-      'Breakfast: Uthappam & Tea',
+      'Breakfast: Uthappam , Sambar & Tea',
       'Lunch: Veg Hariyali , Palak Sabji & Curd Rice',
       'Snacks: Pani Poori',
       'Dinner: Butter Paneer , Capsicum Chicken , Rice , Roti'
