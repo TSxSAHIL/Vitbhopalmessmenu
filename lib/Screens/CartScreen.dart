@@ -183,7 +183,7 @@ class _CartScreenState extends State<CartScreen> {
                     color: Color(0xff1D267D),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Confirm',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
