@@ -43,6 +43,7 @@ dependencies:
   cached_network_image: ^3.2.3
   google_fonts: ^4.0.4
   flutter_rating_bar: ^4.0.1
+  cloud_firestore: ^4.8.0
 
 flutter_icons:
   image_path: "assets/logo.png"

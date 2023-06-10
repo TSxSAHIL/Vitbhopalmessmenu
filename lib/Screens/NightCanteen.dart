@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'CartScreen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class NightCanteen extends StatefulWidget {
   NightCanteen({Key? key}) : super(key: key);
@@ -7,8 +9,8 @@ class NightCanteen extends StatefulWidget {
   @override
   _NightCanteenState createState() => _NightCanteenState();
 }
+
 class _NightCanteenState extends State<NightCanteen> {
-  // Menu List of boys hostel 1
   final List<Map<String, dynamic>> _menuItems = [
     // menu items...
     {'item': 'Bread Omelette', 'price': 'Rs. 45'},
@@ -51,11 +53,9 @@ class _NightCanteenState extends State<NightCanteen> {
     {'item': 'Egg Dosa', 'price': 'Rs. 60'},
   ];
 
-  // Sort Logic
   final List<Map<String, dynamic>> _selectedItems = [];
   bool _sortAscending = true;
 
-  // Logic for sort
   void sortItems() {
     setState(() {
       if (_sortAscending) {
@@ -90,6 +90,17 @@ class _NightCanteenState extends State<NightCanteen> {
     });
   }
 
+  void addRating(String item, double rating) {
+    FirebaseFirestore.instance.collection('ratings').add({
+      'item': item,
+      'rating': rating,
+    }).then((value) {
+      print('Rating added successfully!');
+    }).catchError((error) {
+      print('Failed to add rating: $error');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final Brightness brightness = Theme.of(context).brightness;
@@ -118,6 +129,7 @@ class _NightCanteenState extends State<NightCanteen> {
                 ),
               ),
               DataColumn(label: Text('Add to Cart')),
+              DataColumn(label: Text('Rating')),
             ],
             rows: List<DataRow>.generate(
               _menuItems.length,
@@ -149,6 +161,56 @@ class _NightCanteenState extends State<NightCanteen> {
                           isSelected
                               ? Icons.check_circle
                               : Icons.add_shopping_cart,
+                          color: isDarkTheme ? Colors.white : Colors.black,
+                        ),
+                      ),
+                    ),
+                    DataCell(
+                      IconButton(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              double _rating = 0;
+
+                              return AlertDialog(
+                                title: Text('Rate ${item['item']}'),
+                                content: RatingBar.builder(
+                                  initialRating: _rating,
+                                  minRating: 1,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: true,
+                                  itemCount: 5,
+                                  itemSize: 24.0,
+                                  itemBuilder: (context, _) => Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                  onRatingUpdate: (rating) {
+                                    _rating = rating;
+                                  },
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('Cancel'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      addRating(item['item'], _rating);
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('Submit'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        icon: Icon(
+                          Icons.star,
                           color: isDarkTheme ? Colors.white : Colors.black,
                         ),
                       ),
