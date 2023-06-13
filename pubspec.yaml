@@ -78,6 +78,7 @@ flutter:
     - assets/girls_hostel.jpg
     - assets/Food.jpg
     - assets/logo.png
+    - assets/college_canteen.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
