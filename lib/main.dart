@@ -8,7 +8,7 @@ import 'package:messmenu/Screens/BoysMenuScreen.dart';
 import 'package:messmenu/Screens/GirlsMenuScreen.dart';
 import 'package:messmenu/Screens/CollegeCanteenScreen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -35,7 +35,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("VIT BHOPAL MESS MENU"),
+        title:  Text(
+          "VIT BHOPAL MESS MENU",
+          style: TextStyle(
+            fontFamily: GoogleFonts.poppins().fontFamily,
+          ),
+        ),
         backgroundColor: const Color(0xff0C134F),
         actions: [
           PopupMenuButton(
@@ -102,6 +107,7 @@ class HomeScreen extends StatelessWidget {
                             fontSize: 24.0,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
+                            fontFamily: GoogleFonts.poppins().fontFamily,
                           ),
                         ),
                       ),
@@ -150,6 +156,7 @@ class HomeScreen extends StatelessWidget {
                             fontSize: 24.0,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
+                            fontFamily: GoogleFonts.poppins().fontFamily,
                           ),
                         ),
                       ),
@@ -198,6 +205,7 @@ class HomeScreen extends StatelessWidget {
                             fontSize: 24.0,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
+                            fontFamily: GoogleFonts.poppins().fontFamily,
                           ),
                         ),
                       ),
