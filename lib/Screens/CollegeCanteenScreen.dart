@@ -1,10 +1,29 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:messmenu/Screens/AllFoodItemsScreen.dart';
-class CollegeCanteenScreen extends StatelessWidget {
+import 'cart_item.dart';
+import 'ubscreen.dart';
+
+class CollegeCanteenScreen extends StatefulWidget {
   const CollegeCanteenScreen({Key? key}) : super(key: key);
+
+  @override
+  _CollegeCanteenScreenState createState() => _CollegeCanteenScreenState();
+}
+
+class _CollegeCanteenScreenState extends State<CollegeCanteenScreen> {
+  List<CartItem> cartItems = [];
+
+  void navigateToCartScreen(List<CartItem> updatedCartItems) {
+    setState(() {
+      cartItems = updatedCartItems;
+    });
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => UbScreen(cartItems: cartItems, onCartItemsUpdated: navigateToCartScreen),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +42,14 @@ class CollegeCanteenScreen extends StatelessWidget {
             pinned: true,
             floating: false,
             snap: false,
+            actions: [
+              IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  navigateToCartScreen(cartItems);
+                },
+              ),
+            ],
           ),
           SliverToBoxAdapter(
             child: Padding(
@@ -32,7 +59,7 @@ class CollegeCanteenScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Categories',
-                    style: GoogleFonts.poppins(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -43,7 +70,7 @@ class CollegeCanteenScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Container(
-              height: 180, // Set a fixed height for the Container
+              height: 180,
               child: ListView(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
@@ -80,7 +107,6 @@ class CollegeCanteenScreen extends StatelessWidget {
                     imagePath: 'assets/cake.jpg',
                     name: 'Cakes',
                   ),
-                  // Add more food items as needed
                 ],
               ),
             ),
@@ -88,18 +114,47 @@ class CollegeCanteenScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.all(16.0),
-              child: TextButton(
-                onPressed: () {
-                  // Handle "Explore Whole Menu" button press
-                },
-                child: Text(
-                  'Explore Whole Menu',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.blue,
-                  ),
+              child: Text(
+                'Menu ',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: ExpandableCard(
+              title: 'South Indian',
+              dishes: [
+                MenuItem(name: 'Dosa', rate: 5.99),
+                MenuItem(name: 'Idli', rate: 3.99),
+                MenuItem(name: 'Vada', rate: 2.99),
+              ],
+              onCartItemsUpdated: navigateToCartScreen,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: ExpandableCard(
+              title: 'Sandwich',
+              dishes: [
+                MenuItem(name: 'Veg Sandwich', rate: 4.99),
+                MenuItem(name: 'Grilled Cheese Sandwich', rate: 5.99),
+                MenuItem(name: 'Club Sandwich', rate: 6.99),
+              ],
+              onCartItemsUpdated: navigateToCartScreen,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: ExpandableCard(
+              title: 'Veg Starters',
+              dishes: [
+                MenuItem(name: 'Paneer Tikka', rate: 7.99),
+                MenuItem(name: 'Vegetable Pakora', rate: 4.99),
+                MenuItem(name: 'Crispy Corn', rate: 6.99),
+              ],
+              onCartItemsUpdated: navigateToCartScreen,
             ),
           ),
         ],
@@ -152,7 +207,7 @@ class FoodItem extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8), // Add a SizedBox for spacing
+        SizedBox(height: 8),
         Text(
           name,
           style: TextStyle(
@@ -165,3 +220,88 @@ class FoodItem extends StatelessWidget {
     );
   }
 }
+
+class MenuItem {
+  final String name;
+  final double rate;
+
+  MenuItem({
+    required this.name,
+    required this.rate,
+  });
+}
+
+class ExpandableCard extends StatefulWidget {
+  final String title;
+  final List<MenuItem> dishes;
+  final Function(List<CartItem>) onCartItemsUpdated; // New line
+
+  const ExpandableCard({
+    Key? key,
+    required this.title,
+    required this.dishes,
+    required this.onCartItemsUpdated, // Updated line
+  }) : super(key: key);
+
+  @override
+  _ExpandableCardState createState() => _ExpandableCardState();
+}
+
+class _ExpandableCardState extends State<ExpandableCard> {
+  bool _isExpanded = false;
+  List<CartItem> _cartItems = [];
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _isExpanded = !_isExpanded;
+        });
+      },
+      child: Card(
+        margin: EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text(
+                widget.title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              trailing: Icon(_isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down),
+            ),
+            if (_isExpanded)
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: widget.dishes.map((dish) {
+                    return ListTile(
+                      title: Text(
+                        dish.name,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      trailing: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            _cartItems.add(CartItem(name: dish.name, rate: dish.rate));
+                          });
+
+                          widget.onCartItemsUpdated(_cartItems); // Updated line
+                        },
+                        child: Text('Add'),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
