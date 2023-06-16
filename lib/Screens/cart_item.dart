@@ -1,12 +1,12 @@
-import 'CollegeCanteenScreen.dart';
+import 'package:messmenu/Screens/CollegeCanteenScreen.dart';
+
 
 class CartItem {
-  final String name;
-  final double rate;
+  final CollegeMenuItem dish;
+  final int quantity;
 
   CartItem({
-    required this.name,
-    required this.rate,
+    required this.dish,
+    required this.quantity,
   });
 }
-

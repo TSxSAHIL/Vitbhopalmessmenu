@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:messmenu/Screens/AboutPage.dart';
 import 'package:messmenu/Screens/Block1&2.dart';
+import 'package:messmenu/Screens/NewUB.dart';
 import 'package:messmenu/Screens/Splashscreen.dart';
-// ignore: unused_import
-import 'package:messmenu/Screens/BoysMenuScreen.dart';
 import 'package:messmenu/Screens/GirlsMenuScreen.dart';
-import 'package:messmenu/Screens/CollegeCanteenScreen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -172,7 +170,7 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CollegeCanteenScreen()),
+                    MaterialPageRoute(builder: (context) => const NewUB()),
                   );
                 },
                 child: Container(

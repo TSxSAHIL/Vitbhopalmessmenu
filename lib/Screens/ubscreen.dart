@@ -1,37 +1,53 @@
 import 'package:flutter/material.dart';
 import 'cart_item.dart';
 
-
-class UbScreen extends StatefulWidget {
+class UbScreen extends StatelessWidget {
   final List<CartItem> cartItems;
-  final Function(List<CartItem>) onCartItemsUpdated; // New line
+  final Function(List<CartItem>) onCartItemsUpdated;
 
   const UbScreen({
     Key? key,
     required this.cartItems,
-    required this.onCartItemsUpdated, // Updated line
+    required this.onCartItemsUpdated,
   }) : super(key: key);
 
-  @override
-  _UbScreenState createState() => _UbScreenState();
-}
-
-class _UbScreenState extends State<UbScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
       ),
-      body: ListView.builder(
-        itemCount: widget.cartItems.length,
-        itemBuilder: (context, index) {
-          final item = widget.cartItems[index];
-          return ListTile(
-            title: Text(item.name),
-            subtitle: Text('\$${item.rate.toStringAsFixed(2)}'),
-          );
-        },
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: cartItems.length,
+              itemBuilder: (context, index) {
+                final cartItem = cartItems[index];
+                return ListTile(
+                  title: Text(cartItem.dish.name),
+                  subtitle: Text('Quantity: ${cartItem.quantity}'),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      cartItems.removeAt(index);
+                      onCartItemsUpdated(cartItems);
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                // Handle order placement
+              },
+              child: Text('Place Order'),
+            ),
+          ),
+        ],
       ),
     );
   }

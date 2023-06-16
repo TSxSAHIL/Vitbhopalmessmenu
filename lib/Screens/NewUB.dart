@@ -1,34 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:messmenu/Screens/ExpandableCard.dart';
-import 'package:messmenu/Screens/ubscreen.dart';
-import 'cart_item.dart';
 
-class CollegeCanteenScreen extends StatefulWidget {
-  const CollegeCanteenScreen({Key? key}) : super(key: key);
+class NewUB extends StatefulWidget {
+  const NewUB({Key? key}) : super(key: key);
 
   @override
-  _CollegeCanteenScreenState createState() => _CollegeCanteenScreenState();
+  _NewUBState createState() => _NewUBState();
 }
 
-class _CollegeCanteenScreenState extends State<CollegeCanteenScreen> {
-  List<CartItem> cartItems = [];
-
-  void navigateToCartScreen(List<CartItem> updatedCartItems) {
-    setState(() {
-      cartItems = updatedCartItems;
-    });
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => UbScreen(
-          cartItems: cartItems,
-          onCartItemsUpdated: navigateToCartScreen,
-        ),
-      ),
-    );
-  }
-
+class _NewUBState extends State<NewUB> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,9 +28,7 @@ class _CollegeCanteenScreenState extends State<CollegeCanteenScreen> {
             actions: [
               IconButton(
                 icon: Icon(Icons.shopping_cart),
-                onPressed: () {
-                  navigateToCartScreen(cartItems);
-                },
+                onPressed: () {},
               ),
             ],
           ),
@@ -113,66 +90,6 @@ class _CollegeCanteenScreenState extends State<CollegeCanteenScreen> {
                   ),
                 ],
               ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: ExpandableCard(
-              title: 'South Indian',
-              dishes: [
-                CollegeMenuItem(name: 'Dosa', rate: 5.99, quantity: 0),
-                CollegeMenuItem(name: 'Idli', rate: 3.99, quantity: 0),
-                CollegeMenuItem(name: 'Vada', rate: 2.99, quantity: 0),
-              ],
-              onCartItemAdded: (CartItem cartItem) {
-                setState(() {
-                  cartItems.add(cartItem);
-                });
-              },
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: ExpandableCard(
-              title: 'Sandwich',
-              dishes: [
-                CollegeMenuItem(name: 'Veg Sandwich', rate: 4.99, quantity: 0),
-                CollegeMenuItem(
-                    name: 'Grilled Cheese Sandwich', rate: 5.99, quantity: 0),
-                CollegeMenuItem(name: 'Club Sandwich', rate: 6.99, quantity: 0),
-              ],
-              onCartItemAdded: (CartItem cartItem) {
-                setState(() {
-                  cartItems.add(cartItem);
-                });
-              },
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: ExpandableCard(
-              title: 'Veg Starters',
-              dishes: [
-                CollegeMenuItem(name: 'Paneer Tikka', rate: 7.99, quantity: 0),
-                CollegeMenuItem(
-                    name: 'Vegetable Pakora', rate: 4.99, quantity: 0),
-                CollegeMenuItem(name: 'Crispy Corn', rate: 6.99, quantity: 0),
-              ],
-              onCartItemAdded: (CartItem cartItem) {
-                setState(() {
-                  cartItems.add(cartItem);
-                });
-              },
             ),
           ),
         ],
@@ -237,16 +154,4 @@ class FoodItem extends StatelessWidget {
       ],
     );
   }
-}
-
-class CollegeMenuItem {
-  final String name;
-  final double rate;
-  int quantity;
-
-  CollegeMenuItem({
-    required this.name,
-    required this.rate,
-    this.quantity = 0,
-  });
 }
