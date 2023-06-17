@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:messmenu/Screens/UBCartScreen.dart';
 
 class NewUB extends StatefulWidget {
   const NewUB({Key? key}) : super(key: key);
@@ -8,6 +9,38 @@ class NewUB extends StatefulWidget {
 }
 
 class _NewUBState extends State<NewUB> {
+  List<MenuSection> menuSections = [
+    MenuSection(
+      title: 'Appetizers',
+      items: [
+        MenuItem(
+          name: 'Nachos',
+          price: 8.99,
+        ),
+        MenuItem(
+          name: 'Chicken Wings',
+          price: 10.99,
+        ),
+      ],
+    ),
+    MenuSection(
+      title: 'Main Course',
+      items: [
+        MenuItem(
+          name: 'Steak',
+          price: 20.99,
+        ),
+        MenuItem(
+          name: 'Salmon',
+          price: 18.99,
+        ),
+      ],
+    ),
+    // Add more sections and items as needed
+  ];
+
+  List<MenuItem> cartItems = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,11 +61,16 @@ class _NewUBState extends State<NewUB> {
             actions: [
               IconButton(
                 icon: Icon(Icons.shopping_cart),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UBCart(cartItems: cartItems)),
+                  );
+                },
               ),
             ],
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: Row(
@@ -92,6 +130,112 @@ class _NewUBState extends State<NewUB> {
               ),
             ),
           ),
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                final section = menuSections[index];
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
+                      child: Text(
+                        section.title,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: section.items.length,
+                      itemBuilder: (context, itemIndex) {
+                        MenuItem item = section.items[itemIndex];
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ListTile(
+                              title: Padding(
+                                padding: const EdgeInsets.only(top: 4.0),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        item.name,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ),
+                                    CartButton(
+                                      item: item,
+                                      onAddToCart: () {
+                                        setState(() {
+                                          item.quantity = 1;
+                                          cartItems.add(item);
+                                        });
+                                      },
+                                      onIncrement: () {
+                                        setState(() {
+                                          item.quantity++;
+                                        });
+                                      },
+                                      onDecrement: () {
+                                        setState(() {
+                                          if (item.quantity > 0) {
+                                            item.quantity--;
+                                          }
+                                        });
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 18.0,
+                                bottom: 8.0,
+                              ),
+                              child: Text(
+                                '\Rs ${item.price.toStringAsFixed(2)}',
+                                style:const TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    if (index < menuSections.length - 1)
+                      const Divider(
+                        indent: 16.0,
+                        endIndent: 16.0,
+                        thickness: 1.0,
+                        color: Colors.grey,
+                      ),
+                  ],
+                );
+              },
+              childCount: menuSections.length,
+            ),
+          ),
         ],
       ),
     );
@@ -142,10 +286,10 @@ class FoodItem extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8),
+        SizedBox(height: 1),
         Text(
           name,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -153,5 +297,72 @@ class FoodItem extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class MenuSection {
+  final String title;
+  final List<MenuItem> items;
+
+  MenuSection({
+    required this.title,
+    required this.items,
+  });
+}
+
+class MenuItem {
+  final String name;
+  final double price;
+  int quantity;
+
+  MenuItem({
+    required this.name,
+    required this.price,
+    this.quantity = 0,
+  });
+}
+
+class CartButton extends StatelessWidget {
+  final MenuItem item;
+  final VoidCallback onAddToCart;
+  final VoidCallback onIncrement;
+  final VoidCallback onDecrement;
+
+  const CartButton({
+    Key? key,
+    required this.item,
+    required this.onAddToCart,
+    required this.onIncrement,
+    required this.onDecrement,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (item.quantity == 0) {
+      return IconButton(
+        onPressed: onAddToCart,
+        icon: Icon(Icons.add_shopping_cart),
+      );
+    } else {
+      return Row(
+        children: [
+          IconButton(
+            onPressed: onDecrement,
+            icon: Icon(Icons.remove),
+          ),
+          Text(
+            item.quantity.toString(),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+          IconButton(
+            onPressed: onIncrement,
+            icon: Icon(Icons.add),
+          ),
+        ],
+      );
+    }
   }
 }

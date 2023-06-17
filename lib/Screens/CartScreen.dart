@@ -175,7 +175,7 @@ class _CartScreenState extends State<CartScreen> {
               GestureDetector(
                 onTap: confirmCart,
                 child: Container(
-                  padding: EdgeInsets.symmetric(
+                  padding:const  EdgeInsets.symmetric(
                     vertical: 8.0,
                     horizontal: 16.0,
                   ),

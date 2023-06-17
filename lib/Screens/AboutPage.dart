@@ -51,7 +51,7 @@ class AboutPage extends StatelessWidget {
                 BlendMode.dstATop,
               ),
             ),
-            color: Color.fromRGBO(0, 0, 0, 0.6),
+            color: const Color.fromRGBO(0, 0, 0, 0.6),
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),

@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
-                    image: DecorationImage(
+                    image:const  DecorationImage(
                       image: AssetImage('assets/boys_hostel.jpg'),
                       fit: BoxFit.cover,
                     ),
@@ -127,7 +127,7 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('assets/girls_hostel.jpg'),
                       fit: BoxFit.cover,
                     ),
@@ -176,7 +176,7 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('assets/college_canteen.jpg'),
                       fit: BoxFit.cover,
                     ),

@@ -182,7 +182,7 @@ class _NightCanteenState extends State<NightCanteen> {
                                   allowHalfRating: true,
                                   itemCount: 5,
                                   itemSize: 24.0,
-                                  itemBuilder: (context, _) => Icon(
+                                  itemBuilder: (context, _) =>const  Icon(
                                     Icons.star,
                                     color: Colors.amber,
                                   ),
@@ -232,8 +232,8 @@ class _NightCanteenState extends State<NightCanteen> {
             ),
           );
         },
-        child: const Icon(Icons.shopping_cart),
         backgroundColor: const Color(0xFF1D267D),
+        child: const Icon(Icons.shopping_cart),
       ),
     );
   }
