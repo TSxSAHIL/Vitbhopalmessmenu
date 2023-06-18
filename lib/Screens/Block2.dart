@@ -60,7 +60,7 @@ class _Block2State extends State<Block2> {
       'Breakfast: Chole Bhature , Fruit ',
       'Lunch: Chana Dal Khichdi , Baigan Bharta ,Sambhar , Rice , Roti',
       'Snacks: Samosa/Dahi Vada & Tea',
-      'Dinner: Gobi Manchurian , Fried Rice , Rice , Roti'
+      'Dinner: Gobi Manchurian , Fried Rice/Noodles , Rice , Roti'
     ],
     'Sunday': [
       'Breakfast: Masala Dosa , Chutney , Fruit',

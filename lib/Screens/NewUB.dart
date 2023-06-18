@@ -64,24 +64,35 @@ class _NewUBState extends State<NewUB> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => UBCart(cartItems: cartItems)),
+                    MaterialPageRoute(
+                        builder: (context) => UBCart(cartItems: cartItems)),
                   );
                 },
               ),
             ],
           ),
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.all(16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Categories',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.shopping_cart, color: Colors.black),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UBCart(cartItems: cartItems)),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -214,7 +225,7 @@ class _NewUBState extends State<NewUB> {
                               ),
                               child: Text(
                                 '\Rs ${item.price.toStringAsFixed(2)}',
-                                style:const TextStyle(
+                                style: const TextStyle(
                                   color: Colors.black,
                                 ),
                               ),
