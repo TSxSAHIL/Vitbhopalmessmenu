@@ -1,0 +1,120 @@
+import 'package:messmenu/Screens/NewUB.dart';
+
+List<MenuSection> menuSections = [
+    MenuSection(
+      title: 'Starters',
+      items: [
+        MenuItem(
+          name: 'Veg Noodles',
+          price: 130,
+        ),
+        MenuItem(
+          name: 'Veg Fried Rice',
+          price: 130,
+        ),
+        MenuItem(
+          name: 'Chicken Noodles',
+          price: 150,
+        ),
+        MenuItem(
+          name: 'Chicken Fried Rice',
+          price: 150,
+        ),
+        MenuItem(
+          name: 'Chicken Biryani',
+          price: 180,
+        ),
+        MenuItem(
+          name: 'Jeera Rice',
+          price: 130,
+        ),
+        MenuItem(
+          name: 'Veg Biryani',
+          price: 160,
+        ),
+        MenuItem(
+          name: 'Veg Schezwan Noodles',
+          price: 131,
+        ),
+        MenuItem(
+          name: 'Schezwan Veg Fried Rice',
+          price: 131,
+        ),
+        MenuItem(
+          name: 'Schezwan Chicken Fried Rice',
+          price: 152,
+        ),
+        MenuItem(
+          name: 'Paneer Fried Rice',
+          price: 160,
+        ),
+        MenuItem(
+          name: 'Paneer Noodles',
+          price: 160,
+        ),
+        MenuItem(
+          name: 'Schezwan Chicken Noodles',
+          price: 152,
+        ),
+        MenuItem(
+          name: 'Egg Noodles',
+          price: 142,
+        ),
+        MenuItem(
+          name: 'Egg Fried Rice',
+          price: 142,
+        ),
+      ],
+    ),
+    MenuSection(
+      title: 'Bakery Items',
+      items: [
+        MenuItem(
+          name: 'Veg Plater',
+          price: 45,
+        ),
+        MenuItem(
+          name: 'Veg Sub Roll',
+          price: 42,
+        ),
+        MenuItem(
+          name: 'Veg TurnOver',
+          price: 45,
+        ),
+        MenuItem(
+          name: 'Chilly Cheese Plater',
+          price: 50,
+        ),
+        MenuItem(
+          name: 'Paneer Pizza Bun',
+          price: 50,
+        ),
+        MenuItem(
+          name: 'Veg Crispy Roll',
+          price: 50,
+        ),
+        MenuItem(
+          name: 'Chicken Turnover',
+          price: 50,
+        ),
+        MenuItem(
+          name: 'Chicken Pizza Bun',
+          price: 50,
+        ),
+        MenuItem(
+          name: 'Chicken Sub Roli',
+          price: 50,
+        ),
+        MenuItem(
+          name: 'Chicken Plater',
+          price: 53,
+        ),
+        MenuItem(
+          name: 'Egg Turnover',
+          price: 40,
+        ),
+      ],
+
+
+
+      

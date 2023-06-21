@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "440903298571",
+    "project_id": "vitbhopalmessmenu",
+    "storage_bucket": "vitbhopalmessmenu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440903298571:android:ff683a32e7d9e461c2210e",
+        "android_client_info": {
+          "package_name": "com.codecraft.vitbmessmenu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "440903298571-emu8s0ls0d5u7nr1badega92lgh9hlnf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh-Czrf9FldJh6OzlYXLZ6qnQtXaPnXsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "440903298571-emu8s0ls0d5u7nr1badega92lgh9hlnf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

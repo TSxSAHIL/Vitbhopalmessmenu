@@ -4,12 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AboutPage extends StatelessWidget {
   final String _name = 'Sahil Arora';
-  final String _email = 'your-email@example.com';
+  final String _email = 'codecraftepics@gmail.com';
   final String _linkedinUrl =
-      'https://www.linkedin.com/in/your-linkedin-profile';
-  final String _githubUrl = 'https://github.com/your-github-profile';
+      'https://https://www.linkedin.com/in/sahil-arora-472415209/';
+  final String _githubUrl = 'https://https://github.com/TSxSAHIL';
   final String _instagramUrl =
-      'https://www.instagram.com/your-instagram-profile';
+      'https://www.instagram.com/being.sahil23/';
 
   Future<void> _launchUrl(String url) async {
     if (await canLaunch(url)) {
@@ -19,9 +19,9 @@ class AboutPage extends StatelessWidget {
     }
   }
   
-  Widget _buildClickableText(String text, String githubUrl) {
+  Widget _buildClickableText(String text, String url) {
     return InkWell(
-      onTap: () => _launchUrl(githubUrl),
+      onTap: () => _launchUrl(url),
       child: Text(
         text,
         style: TextStyle(
@@ -87,7 +87,7 @@ class AboutPage extends StatelessWidget {
                   height: 80,
                 ),
                  Text(
-                  'Version 1.0.1',
+                  'Version 1.0.9',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 16.0,
