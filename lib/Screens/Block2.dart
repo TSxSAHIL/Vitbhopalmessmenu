@@ -78,7 +78,6 @@ class _Block2State extends State<Block2> {
   @override
   Widget build(BuildContext context) {
     final List<String> currentMenu = getMenuForDate(selectedDate);
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
