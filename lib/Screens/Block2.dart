@@ -74,7 +74,7 @@ class _Block2State extends State<Block2> {
     final String dayName = DateFormat('EEEE').format(date);
     return menu[dayName] ?? [];
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final List<String> currentMenu = getMenuForDate(selectedDate);
@@ -143,3 +143,6 @@ class _Block2State extends State<Block2> {
     );
   }
 }
+
+
+
