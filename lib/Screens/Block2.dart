@@ -143,4 +143,3 @@ class _Block2State extends State<Block2> {
     );
   }
 }
-
