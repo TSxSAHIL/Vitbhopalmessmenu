@@ -69,12 +69,11 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
       'Dinner: Dal Makhani ,Tinda Aloo/Patta Gobi , Gulab Jamun , Rice , Roti '
     ]
   };
-  
+
   List<String> getMenuForDate(DateTime date) {
     final String dayName = DateFormat('EEEE').format(date);
     return menu[dayName] ?? [];
   }
-
   @override
   Widget build(BuildContext context) {
     final List<String> currentMenu = getMenuForDate(selectedDate);
