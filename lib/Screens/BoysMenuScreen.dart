@@ -16,7 +16,6 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
       firstDate: DateTime(2022),
       lastDate: DateTime(2025),
     );
-
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
