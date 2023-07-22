@@ -8,7 +8,6 @@ class BoysMenuScreen extends StatefulWidget {
 
 class _BoysMenuScreenState extends State<BoysMenuScreen> {
   DateTime selectedDate = DateTime.now();
-
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
