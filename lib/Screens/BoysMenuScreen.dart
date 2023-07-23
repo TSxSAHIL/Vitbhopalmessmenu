@@ -22,7 +22,7 @@ class _BoysMenuScreenState extends State<BoysMenuScreen> {
     }
   }
   final Map<String, List<String>> menu = {
-    // menu data....
+    // menu data...
     'Monday': [
       'Breakfast: Idly , Sambhar , Midhu Vada',
       'Lunch: Rajma Chawal , Jeera Aloo Fry , Rice , Roti',
