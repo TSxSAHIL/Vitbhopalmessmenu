@@ -779,7 +779,7 @@ class CartButton extends StatelessWidget {
           ),
           IconButton(
             onPressed: onIncrement,
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
           ),
         ],
       );
