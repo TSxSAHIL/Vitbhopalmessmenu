@@ -786,4 +786,3 @@ class CartButton extends StatelessWidget {
     }
   }
 }
-
