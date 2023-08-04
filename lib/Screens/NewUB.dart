@@ -747,7 +747,6 @@ class CartButton extends StatelessWidget {
   final VoidCallback onAddToCart;
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;
-
   const CartButton({
     Key? key,
     required this.item,
