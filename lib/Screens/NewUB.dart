@@ -741,7 +741,6 @@ class MenuItem {
     this.quantity = 0,
   });
 }
-
 class CartButton extends StatelessWidget {
   final MenuItem item;
   final VoidCallback onAddToCart;
