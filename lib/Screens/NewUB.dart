@@ -759,7 +759,7 @@ class CartButton extends StatelessWidget {
     if (item.quantity == 0) {
       return IconButton(
         onPressed: onAddToCart,
-        icon: Icon(Icons.add_shopping_cart),
+        icon: const Icon(Icons.add_shopping_cart),
       );
     } else {
       return Row(
