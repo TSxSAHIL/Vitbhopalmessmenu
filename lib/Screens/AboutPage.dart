@@ -86,8 +86,6 @@ class AboutPage extends StatelessWidget {
                 const SizedBox(
                   height: 80,
                 ),
-
-                
                  Text(
                   'Version 1.0.9',
                   style: TextStyle(
