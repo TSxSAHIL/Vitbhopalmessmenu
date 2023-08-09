@@ -6,7 +6,6 @@ import 'package:messmenu/Screens/NewUB.dart';
 import 'package:messmenu/Screens/Splashscreen.dart';
 import 'package:messmenu/Screens/GirlsMenuScreen.dart';
 void main() => runApp(const MyApp());
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
