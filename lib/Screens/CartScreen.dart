@@ -180,7 +180,7 @@ class _CartScreenState extends State<CartScreen> {
                     horizontal: 16.0,
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xff1D267D),
+                    color: const Color(0xff1D267D),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: const Text(
