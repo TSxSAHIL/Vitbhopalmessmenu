@@ -152,7 +152,7 @@ class _CartScreenState extends State<CartScreen> {
         'Total Items: ${getTotalItemCount()}',
         style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xff0C134F)),
       ),
-      SizedBox(height: 8),
+      const SizedBox(height: 8),
       Container(
         padding: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
