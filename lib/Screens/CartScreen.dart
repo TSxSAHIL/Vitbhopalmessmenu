@@ -157,7 +157,7 @@ class _CartScreenState extends State<CartScreen> {
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           color: Theme.of(context).brightness == Brightness.dark
-              ? Color(0xFF1D267D)
+              ? const Color(0xFF1D267D)
               : Colors.white,
           borderRadius: BorderRadius.circular(8.0),
         ),
