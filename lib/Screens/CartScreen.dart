@@ -130,7 +130,7 @@ class _CartScreenState extends State<CartScreen> {
                     children: [
                       IconButton(
                         onPressed: () => decreaseItemCount(index),
-                        icon: Icon(Icons.remove),
+                        icon: const Icon(Icons.remove),
                       ),
                       Text('$itemQuantity'),
                       IconButton(
