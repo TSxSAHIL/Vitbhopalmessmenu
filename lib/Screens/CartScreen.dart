@@ -104,7 +104,7 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
-        backgroundColor: Color((0xff0C134F)),
+        backgroundColor: const Color((0xff0C134F)),
       ),
       body: _cartItems.isEmpty
           ? const Center(
