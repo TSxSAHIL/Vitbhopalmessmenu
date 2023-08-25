@@ -82,7 +82,7 @@ class _CartScreenState extends State<CartScreen> {
               onPressed: () {
                 Navigator.pop(context); // Close the dialog
                 setState(() {
-                  _isCartConfirmed = false; // Reset the flag
+                  _isCartConfirmed = false; 
                 });
               },
               child: const Text(
