@@ -80,7 +80,7 @@ class _CartScreenState extends State<CartScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context); 
                 setState(() {
                   _isCartConfirmed = false; 
                 });
