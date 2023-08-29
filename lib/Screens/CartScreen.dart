@@ -15,7 +15,6 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   List<Map<String, dynamic>> _cartItems = [];
   bool _isCartConfirmed = false; // Add the isCartConfirmed variable
-
   @override
   void initState() {
     super.initState();
