@@ -1,7 +1,6 @@
 // ignore_for_file: unused_import, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-
 import 'Payments/PaymentPage.dart';
 
 class CartScreen extends StatefulWidget {
