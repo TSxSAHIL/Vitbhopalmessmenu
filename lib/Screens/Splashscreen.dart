@@ -43,4 +43,4 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-//splash screen code 
+//splash screen code is given 
