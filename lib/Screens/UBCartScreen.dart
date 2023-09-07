@@ -181,7 +181,7 @@ class _UBCartState extends State<UBCart> {
                       borderRadius: BorderRadius.circular(8.0), // Round the button edges
                     ),
                   ),
-                  child: Text('Browse Menu'),
+                  child: const Text('Browse Menu'),
                 ),
               ],
             ),
