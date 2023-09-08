@@ -159,7 +159,7 @@ class _UBCartState extends State<UBCart> {
                   icon:const  Icon(Icons.check), // Add an icon to the button
                   label: const Text('Confirm Order'),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
