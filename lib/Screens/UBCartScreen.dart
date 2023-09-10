@@ -128,7 +128,7 @@ class _UBCartState extends State<UBCart> {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          title: Text('Confirm Order'),
+                          title: const Text('Confirm Order'),
                           content: Text('The total amount for the order is \Rs ${total.toStringAsFixed(2)}.'),
                           actions: [
                             TextButton(
