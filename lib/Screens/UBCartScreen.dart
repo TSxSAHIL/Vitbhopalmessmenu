@@ -99,7 +99,7 @@ class _UBCartState extends State<UBCart> {
                   color: Colors.grey.withOpacity(0.2),
                   spreadRadius: 1,
                   blurRadius: 2,
-                  offset: Offset(0, -1), // Add a shadow at the top of the container
+                  offset:const  Offset(0, -1), // Add a shadow at the top of the container
                 ),
               ],
             ),
