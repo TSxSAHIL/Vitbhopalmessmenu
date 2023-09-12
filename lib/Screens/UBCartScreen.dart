@@ -91,7 +91,7 @@ class _UBCartState extends State<UBCart> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
