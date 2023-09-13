@@ -82,7 +82,7 @@ class _UBCartState extends State<UBCart> {
                       ),
                       IconButton(
                         onPressed: () => deleteItem(item),
-                        icon: Icon(Icons.delete),
+                        icon: const Icon(Icons.delete),
                       ),
                     ],
                   ),
