@@ -78,7 +78,7 @@ class _UBCartState extends State<UBCart> {
                       Text(item.quantity.toString()),
                       IconButton(
                         onPressed: () => incrementQuantity(item),
-                        icon: Icon(Icons.add),
+                        icon: const Icon(Icons.add),
                       ),
                       IconButton(
                         onPressed: () => deleteItem(item),
