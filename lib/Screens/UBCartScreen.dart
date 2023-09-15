@@ -73,7 +73,7 @@ class _UBCartState extends State<UBCart> {
                     children: [
                       IconButton(
                         onPressed: () => decrementQuantity(item),
-                        icon: Icon(Icons.remove),
+                        icon: const Icon(Icons.remove),
                       ),
                       Text(item.quantity.toString()),
                       IconButton(
