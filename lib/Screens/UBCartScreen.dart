@@ -65,7 +65,7 @@ class _UBCartState extends State<UBCart> {
                 return ListTile(
                   title: Text(
                     item.name,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text('\Rs ${item.price.toStringAsFixed(2)}'),
                   trailing: Row(
