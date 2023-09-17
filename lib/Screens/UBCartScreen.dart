@@ -53,7 +53,7 @@ class _UBCartState extends State<UBCart> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cart'),
-        backgroundColor: Color(0xff0C134F), // Customize the app bar color
+        backgroundColor: const Color(0xff0C134F), // Customize the app bar color
       ),
       body: Column(
         children: [
