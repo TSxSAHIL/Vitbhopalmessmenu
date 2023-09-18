@@ -52,7 +52,7 @@ class _UBCartState extends State<UBCart> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart'),
+        title: const Text('Cart'),
         backgroundColor: const Color(0xff0C134F), // Customize the app bar color
       ),
       body: Column(
